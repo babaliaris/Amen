@@ -1,0 +1,10 @@
+.vs/
+.vscode/
+builds/
+obj/
+Makefile
+
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
