@@ -1,5 +1,6 @@
 #define AMEN_ENTRYPOINT
 #include <Amen.h>
+#include "layers/testLayer.h"
 
 class Sandbox: public Amen::App
 {
@@ -9,6 +10,9 @@ class Sandbox: public Amen::App
 	}
 
 	~Sandbox(){}
+
+	private:
+		Amen::Layer* test_layer;
 };
 
 Amen::App* Amen::CreateApp()

@@ -6,3 +6,4 @@
 #include <core/logger.h>
 #include <platform/platform.h>
 #include <core/window.h>
+#include <core/Layer.h>

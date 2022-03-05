@@ -2,6 +2,8 @@
 #include "core.h"
 #include <core/events/event.h>
 #include <core/window.h>
+#include <vector>
+#include <core/Layer.h>
 
 /**
 * Root namespace of Amen Engine.
@@ -40,29 +42,54 @@ namespace Amen
 			*/
 			void Run();
 
+
 			/**
-			* Executes when an event occurs. You MUST NOT call this.
+			* Pushes a layer into the layers stack.
 			*
+			* @param layer The Amen::Layer to be inserted.
 			*/
-			void OnEvent(Event& e);
+			void PushLayer(Layer *layer);
+
+
+
+			/**
+			* Removes a layer from the layers stack.Once you removed it, you are now responsible
+			* for it's lifetime.Unless you push it back using Amen::App::PushLayer(Layer *), then you
+			* must delete it.
+			*
+			* @param layer The Amen::Layer to be removed.
+			*/
+			void RemoveLayer(Layer* layer);
+
 
 			/**
 			* Get the Amen::Window instance.
 			*
-			* @returns the Amen::Window instance of the application.
+			* @return the Amen::Window instance of the application.
 			*/
 			inline Window& GetWindow() { return *m_window; }
+
+
+		private:
+
+			/**
+			* Executes when an event occurs.
+			*
+			*/
+			void OnEvent(Event& e);
+
 
 		private:
 			bool m_running = true;
 			bool m_paused = false;
 			Window* m_window;
+			std::vector<Layer*> m_layers;
 	};
 
 	/**
 	* You must implement this method to return an instance of your own Amen::App subclass.
 	* 
-	* @returns an Amen::App
+	* @return an Amen::App instance.
 	*/
 	App* CreateApp();
 }

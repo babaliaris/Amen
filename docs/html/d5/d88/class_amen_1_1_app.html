@@ -89,9 +89,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~App</b> ()</td></
 <tr class="memitem:a050df69a4380960d3f571a683759a62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d88/class_amen_1_1_app.html#a050df69a4380960d3f571a683759a62e">Run</a> ()</td></tr>
 <tr class="memdesc:a050df69a4380960d3f571a683759a62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the application.  <a href="../../d5/d88/class_amen_1_1_app.html#a050df69a4380960d3f571a683759a62e">More...</a><br /></td></tr>
 <tr class="separator:a050df69a4380960d3f571a683759a62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88be5873f77a691f90fa30c01a75de1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d88/class_amen_1_1_app.html#a88be5873f77a691f90fa30c01a75de1c">OnEvent</a> (<a class="el" href="../../d4/d66/class_amen_1_1_event.html">Event</a> &amp;e)</td></tr>
-<tr class="memdesc:a88be5873f77a691f90fa30c01a75de1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes when an event occurs.  <a href="../../d5/d88/class_amen_1_1_app.html#a88be5873f77a691f90fa30c01a75de1c">More...</a><br /></td></tr>
-<tr class="separator:a88be5873f77a691f90fa30c01a75de1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d905b7f7e85bf52d2960b3a49fb577"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d88/class_amen_1_1_app.html#a40d905b7f7e85bf52d2960b3a49fb577">PushLayer</a> (<a class="el" href="../../d9/d58/class_amen_1_1_layer.html">Layer</a> *layer)</td></tr>
+<tr class="memdesc:a40d905b7f7e85bf52d2960b3a49fb577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes a layer into the layers stack.  <a href="../../d5/d88/class_amen_1_1_app.html#a40d905b7f7e85bf52d2960b3a49fb577">More...</a><br /></td></tr>
+<tr class="separator:a40d905b7f7e85bf52d2960b3a49fb577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7d1342e7c3a2fd6f7a23bd06b581d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d88/class_amen_1_1_app.html#a0c7d1342e7c3a2fd6f7a23bd06b581d4">RemoveLayer</a> (<a class="el" href="../../d9/d58/class_amen_1_1_layer.html">Layer</a> *layer)</td></tr>
+<tr class="memdesc:a0c7d1342e7c3a2fd6f7a23bd06b581d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a layer from the layers stack.Once you removed it, you are now responsible for it's lifetime.Unless you push it back using <a class="el" href="../../d5/d88/class_amen_1_1_app.html#a40d905b7f7e85bf52d2960b3a49fb577" title="Pushes a layer into the layers stack.">Amen::App::PushLayer(Layer *)</a>, then you must delete it.  <a href="../../d5/d88/class_amen_1_1_app.html#a0c7d1342e7c3a2fd6f7a23bd06b581d4">More...</a><br /></td></tr>
+<tr class="separator:a0c7d1342e7c3a2fd6f7a23bd06b581d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af80ea2562e938d7e588cbe83c1e8d76b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d45/class_amen_1_1_window.html">Window</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d88/class_amen_1_1_app.html#af80ea2562e938d7e588cbe83c1e8d76b">GetWindow</a> ()</td></tr>
 <tr class="memdesc:af80ea2562e938d7e588cbe83c1e8d76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="../../d4/d45/class_amen_1_1_window.html" title="The Window class.">Amen::Window</a> instance.  <a href="../../d5/d88/class_amen_1_1_app.html#af80ea2562e938d7e588cbe83c1e8d76b">More...</a><br /></td></tr>
 <tr class="separator:af80ea2562e938d7e588cbe83c1e8d76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,24 +137,55 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a88be5873f77a691f90fa30c01a75de1c" name="a88be5873f77a691f90fa30c01a75de1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88be5873f77a691f90fa30c01a75de1c">&#9670;&nbsp;</a></span>OnEvent()</h2>
+<a id="a40d905b7f7e85bf52d2960b3a49fb577" name="a40d905b7f7e85bf52d2960b3a49fb577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d905b7f7e85bf52d2960b3a49fb577">&#9670;&nbsp;</a></span>PushLayer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Amen::App::OnEvent </td>
+          <td class="memname">void Amen::App::PushLayer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/d66/class_amen_1_1_event.html">Event</a> &amp;&#160;</td>
-          <td class="paramname"><em>e</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d9/d58/class_amen_1_1_layer.html">Layer</a> *&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Executes when an event occurs. </p>
-<p >You MUST NOT call this. </p>
+<p>Pushes a layer into the layers stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>The <a class="el" href="../../d9/d58/class_amen_1_1_layer.html" title="To use a layer you have.">Amen::Layer</a> to be inserted. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c7d1342e7c3a2fd6f7a23bd06b581d4" name="a0c7d1342e7c3a2fd6f7a23bd06b581d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7d1342e7c3a2fd6f7a23bd06b581d4">&#9670;&nbsp;</a></span>RemoveLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Amen::App::RemoveLayer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d58/class_amen_1_1_layer.html">Layer</a> *&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes a layer from the layers stack.Once you removed it, you are now responsible for it's lifetime.Unless you push it back using <a class="el" href="../../d5/d88/class_amen_1_1_app.html#a40d905b7f7e85bf52d2960b3a49fb577" title="Pushes a layer into the layers stack.">Amen::App::PushLayer(Layer *)</a>, then you must delete it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>The <a class="el" href="../../d9/d58/class_amen_1_1_layer.html" title="To use a layer you have.">Amen::Layer</a> to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
