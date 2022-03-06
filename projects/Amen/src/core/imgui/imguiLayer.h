@@ -2,27 +2,39 @@
 #include <core/Layer.h>
 #include <core/app.h>
 
+/**
+* Root namespace of Amen Engine.
+*
+*/
 namespace Amen
 {
+
+	/**
+	* ImguiLayer class. App will handle this class.
+	*
+	*/
 	class AMEN_API ImguiLayer : public Layer
 	{
+		friend class App;
+
 		public:
-			ImguiLayer():Layer("Imgui Layer"), m_window( App::Get().GetWindow() ) {};
-			~ImguiLayer();
 
-			void OnUpdate() override;
+			/**
+			* Deconstructor..
+			*
+			*/
+			virtual ~ImguiLayer(){}
 
+		protected:
+			ImguiLayer() : Layer("ImGui Layer"), m_window(App::Get().GetWindow()) {};
 
-			void OnEvent(Event& e) override;
-
-
-			void OnAttach() override;
-
-
-			void OnDetach() override;
 
 		private:
+			static Layer* Create();
+
+		protected:
 			Window& m_window;
 			bool m_showDemoWindow = true;
+
 	};
 }

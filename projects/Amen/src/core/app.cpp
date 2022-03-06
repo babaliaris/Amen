@@ -29,7 +29,7 @@ Amen::App::App() : m_window(nullptr)
 	m_window->SetEventCallback(AMEN_BIND(Amen::App::OnEvent));
 
 	//Push the ImGui Layer.
-	PushLayer(new ImguiLayer());
+	PushLayer( ImguiLayer::Create() );
 }
 
 

@@ -1,16 +1,25 @@
 #include "pch.h"
-#include "imguiLayer.h"
+#include "ImGuiGLFWLayer.h"
 #include <imgui.h>
 #include <core/logger.h>
-
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 #include <GLFW/glfw3.h>
 
 
-Amen::ImguiLayer::~ImguiLayer()
+
+
+Amen::ImGuiGLFWLayer::ImGuiGLFWLayer()
 {
-	AMEN_INFO("Calling ~ImguiLayer()");
+}
+
+
+
+
+
+Amen::ImGuiGLFWLayer::~ImGuiGLFWLayer()
+{
+	AMEN_INFO("Calling ~ImGuiGLFWLayer()");
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
@@ -20,7 +29,7 @@ Amen::ImguiLayer::~ImguiLayer()
 
 
 
-void Amen::ImguiLayer::OnUpdate()
+void Amen::ImGuiGLFWLayer::OnUpdate()
 {
 	//Start the frames.
 	ImGui_ImplOpenGL3_NewFrame();
@@ -39,15 +48,7 @@ void Amen::ImguiLayer::OnUpdate()
 
 
 
-void Amen::ImguiLayer::OnEvent(Event& e)
-{
-}
-
-
-
-
-
-void Amen::ImguiLayer::OnAttach()
+void Amen::ImGuiGLFWLayer::OnAttach()
 {
 	//Check and create ImGui context.
 	IMGUI_CHECKVERSION();
@@ -61,14 +62,6 @@ void Amen::ImguiLayer::OnAttach()
 	ImGui::StyleColorsDark();
 
 	//Initialize opengl and glfw implementations.
-	ImGui_ImplGlfw_InitForOpenGL( (GLFWwindow *)m_window.GetNativeWindow(), true );
+	ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_window.GetNativeWindow(), true);
 	ImGui_ImplOpenGL3_Init("#version 330");
-}
-
-
-
-
-
-void Amen::ImguiLayer::OnDetach()
-{
 }
