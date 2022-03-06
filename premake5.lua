@@ -6,6 +6,7 @@ __BUILD_DIR = "builds/"
 -- Global Depedencies.
 __GLFW_DIR  = "external/glfw/"
 __GLM_DIR   = "external/glm/"
+__IMGUI_DIR = "external/imgui/"
 
 
 
@@ -75,6 +76,38 @@ workspace "Amen"
 
 
 
+
+    -- =============================|Project: ImGui|============================== --
+    project_imgui = "ImGui"
+    project(project_imgui)
+        kind "StaticLib"
+        language "C++"
+        location(__PRJ_DIR.."%{prj.name}/")
+        targetdir(__BUILD_DIR.."%{cfg.shortname}/")
+        objdir(__OBJ_DIR.."%{prj.name}_%{cfg.shortname}/")
+
+        files {
+            __IMGUI_DIR.."*.h",
+            __IMGUI_DIR.."*.cpp",
+            __IMGUI_DIR.."backends/imgui_impl_glfw.h",
+            __IMGUI_DIR.."backends/imgui_impl_glfw.cpp",
+            __IMGUI_DIR.."backends/imgui_impl_opengl3.h",
+            __IMGUI_DIR.."backends/imgui_impl_opengl3.cpp"
+
+        }
+
+        includedirs {
+            __IMGUI_DIR,
+            __GLFW_DIR.."include/"
+        }
+
+        filter {}
+        filter "system:Linux"
+            buildoptions {"-fPIC"}
+    -- =============================|Project: ImGui|============================== --
+
+
+
     -- ==============================|Project: Amen|============================== --
     project_amen = "Amen"
     project(project_amen)
@@ -97,12 +130,14 @@ workspace "Amen"
             __PRJ_DIR..project_glad.."/src/include/",
             __PRJ_DIR..project_stbimage.."/src/",
             __GLFW_DIR.."include/",
-            __GLM_DIR
+            __GLM_DIR,
+            __IMGUI_DIR
         }
 
         links {
             project_glad,
-            project_stbimage
+            project_stbimage,
+            project_imgui
         }
 
         filter {}

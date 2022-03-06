@@ -47,6 +47,7 @@ namespace Amen
 		inline int GetWidth() const override { return m_data.m_width; }
 		inline int GetHeight() const override { return m_data.m_height; }
 		inline const std::string& GetTitle() const override { return m_data.m_title; };
+		inline void* GetNativeWindow() const override { return m_window; };
 		inline bool IsVSynced() const override { return m_data.m_vSynced; }
 
 

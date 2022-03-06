@@ -102,6 +102,14 @@ namespace Amen
 		*/
 		virtual const std::string& GetTitle() const = 0;
 
+
+		/**
+		* Get the native window.
+		*
+		* @return the native window as void *.
+		*/
+		virtual void* GetNativeWindow() const = 0;
+
 		/**
 		* Check if vsync is enabled.
 		*

@@ -18,6 +18,12 @@ namespace Amen
 		public:
 
 			/**
+			* Deconstructor.
+			*
+			*/
+			virtual ~Layer(){}
+
+			/**
 			* It's been called every frame.
 			*
 			*/

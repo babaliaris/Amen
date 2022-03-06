@@ -52,7 +52,7 @@ Amen::GLFW_Window::GLFW_Window(const WindowProps& props) : m_window(nullptr)
 
 Amen::GLFW_Window::~GLFW_Window()
 {
-	AMEN_TRACE("Calling ~GLFW_Window()");
+	AMEN_INFO("Calling ~GLFW_Window()");
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }

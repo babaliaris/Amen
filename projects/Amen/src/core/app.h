@@ -70,6 +70,14 @@ namespace Amen
 			inline Window& GetWindow() { return *m_window; }
 
 
+			/**
+			* Get the Amen::App singleton instance.
+			*
+			* @return the Amen::App instance.
+			*/
+			inline static App& Get() { return *s_instance; }
+
+
 		private:
 
 			/**
@@ -84,6 +92,9 @@ namespace Amen
 			bool m_paused = false;
 			Window* m_window;
 			std::vector<Layer*> m_layers;
+
+		private:
+			static App* s_instance;
 	};
 
 	/**
