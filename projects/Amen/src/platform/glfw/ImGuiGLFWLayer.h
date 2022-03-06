@@ -11,8 +11,12 @@ namespace Amen
 
 			~ImGuiGLFWLayer();
 
-			void OnUpdate() override;
+			virtual void OnAttach() override;
 
-			void OnAttach() override;
+			virtual void Begin() override;
+
+			virtual void End() override;
+
+			virtual void OnImGuiRender() override;
 	};
 }

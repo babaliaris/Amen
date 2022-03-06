@@ -92,6 +92,7 @@ namespace Amen
 			bool m_paused = false;
 			Window* m_window;
 			std::vector<Layer*> m_layers;
+			Layer* m_ImGuiLayer;
 
 		private:
 			static App* s_instance;

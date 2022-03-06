@@ -47,6 +47,14 @@ namespace Amen
 			*/
 			virtual void OnDetach() {};
 
+
+
+			/**
+			* Render Dear ImGui stuff here.
+			*
+			*/
+			virtual void OnImGuiRender() {}
+
 			/**
 			* Get a debug layer name.
 			*

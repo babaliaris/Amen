@@ -28,8 +28,11 @@ Amen::App::App() : m_window(nullptr)
 	//Set the event callback.
 	m_window->SetEventCallback(AMEN_BIND(Amen::App::OnEvent));
 
+	//Create the ImGuiLayer.
+	m_ImGuiLayer = ImguiLayer::Create();
+
 	//Push the ImGui Layer.
-	PushLayer( ImguiLayer::Create() );
+	PushLayer(m_ImGuiLayer);
 }
 
 
@@ -55,12 +58,22 @@ void Amen::App::Run()
 		//Run all the layers.
 		for (Layer *layer : m_layers)
 		{
+			//If the application if not paused.
 			if (!m_paused)
+			{
+				//Layer::OnUpdate()
 				layer->OnUpdate();
+
+				//--------Render Dear ImGui Stuff Here--------//
+				static_cast<ImguiLayer *>(m_ImGuiLayer)->Begin();
+				layer->OnImGuiRender();
+				static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
+				//--------Render Dear ImGui Stuff Here--------//
+			}
 		}
 
 		//Must be last.
-		//Polls the events and swaps the buffers.
+		//Poll the events and swap the buffers.
 		m_window->Update();
 	}
 }

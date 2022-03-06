@@ -25,6 +25,20 @@ namespace Amen
 			*/
 			virtual ~ImguiLayer(){}
 
+
+			/**
+			* Begin.
+			*
+			*/
+			virtual void Begin() = 0;
+
+
+			/**
+			* End.
+			*
+			*/
+			virtual void End() = 0;
+
 		protected:
 			ImguiLayer() : Layer("ImGui Layer"), m_window(App::Get().GetWindow()) {};
 
