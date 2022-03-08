@@ -39,6 +39,13 @@ namespace Amen
 			*/
 			virtual void End() = 0;
 
+
+			/**
+			* SetShowDemoWindow.
+			*
+			*/
+			inline void SetShowDemoWindow(bool enabled) { m_showDemoWindow = enabled; }
+
 		protected:
 			ImguiLayer() : Layer("ImGui Layer"), m_window(App::Get().GetWindow()) {};
 
@@ -48,7 +55,7 @@ namespace Amen
 
 		protected:
 			Window& m_window;
-			bool m_showDemoWindow = false;
+			bool m_showDemoWindow = true;
 
 	};
 }

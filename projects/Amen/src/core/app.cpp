@@ -58,11 +58,16 @@ Amen::App::~App()
 
 void Amen::App::Run()
 {
+	//Set the Clear Color to dark gray.
 	Renderer::Get().SetClearColor(0.2, 0.2, 0.2, 1);
 
 	while (m_running)
 	{
+		//Clear the Color Buffer.
 		Renderer::Get().ClearColorBuffer();
+
+		//Begin ImGUI Frame.
+		static_cast<ImguiLayer *>(m_ImGuiLayer)->Begin();
 
 		//Run all the layers.
 		for (Layer *layer : m_layers)
@@ -70,16 +75,13 @@ void Amen::App::Run()
 			//If the application if not paused.
 			if (!m_paused)
 			{
-				//Layer::OnUpdate()
 				layer->OnUpdate();
-
-				//--------Render Dear ImGui Stuff Here--------//
-				static_cast<ImguiLayer *>(m_ImGuiLayer)->Begin();
 				layer->OnImGuiRender();
-				static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
-				//--------Render Dear ImGui Stuff Here--------//
 			}
 		}
+
+		//End ImGUI Frame.
+		static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
 
 		//Must be last.
 		//Poll the events and swap the buffers.

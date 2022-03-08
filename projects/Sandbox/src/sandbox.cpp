@@ -7,8 +7,8 @@ class Sandbox: public Amen::App
 	public:
 	Sandbox()
 	{
-		//test_layer = new TestLayer();
-		//PushLayer(test_layer);
+		test_layer = new TestLayer();
+		PushLayer(test_layer);
 	}
 
 	~Sandbox(){}
