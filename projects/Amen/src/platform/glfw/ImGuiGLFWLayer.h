@@ -18,5 +18,7 @@ namespace Amen
 			virtual void End() override;
 
 			virtual void OnImGuiRender() override;
+
+			virtual void OnEvent(Event& e) override;
 	};
 }

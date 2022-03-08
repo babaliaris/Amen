@@ -4,6 +4,8 @@
 #include <core/logger.h>
 #include <core/events/application_events.h>
 #include <core/imgui/imguiLayer.h>
+#include <core/events/Input.h>
+#include <core/Render/Renderer.h>
 
 //-------------------------------Static Initializations-------------------------------//
 
@@ -24,6 +26,9 @@ Amen::App::App() : m_window(nullptr)
 
 	//Create the window.
 	m_window = Window::Create();
+
+	//Init Input.
+	Input::Init();
 
 	//Set the event callback.
 	m_window->SetEventCallback(AMEN_BIND(Amen::App::OnEvent));
@@ -53,8 +58,12 @@ Amen::App::~App()
 
 void Amen::App::Run()
 {
+	Renderer::Get().SetClearColor(0.2, 0.2, 0.2, 1);
+
 	while (m_running)
 	{
+		Renderer::Get().ClearColorBuffer();
+
 		//Run all the layers.
 		for (Layer *layer : m_layers)
 		{

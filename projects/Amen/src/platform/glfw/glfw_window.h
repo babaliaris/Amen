@@ -1,6 +1,6 @@
 #pragma once
 #include <core/window.h>
-
+#include "GLFWOpenGLContext.h"
 
 
 struct GLFWwindow;
@@ -57,6 +57,7 @@ namespace Amen
 		private:
 		WindowData m_data;
 		GLFWwindow* m_window;
+		GLFWOpenGLContext* m_context;
 
 	};
 }

@@ -3,6 +3,8 @@
 #include <core/window.h>
 #include <platform/glfw/glfw_window.h>
 #include <platform/glfw/ImGuiGLFWLayer.h>
+#include <platform/OpenGL/OpenGLRenderer.h>
+#include <GLFW/glfw3.h>
 
 //Initialize the s_type static variable.
 Amen::PlatformTypeE Amen::Platform::s_type;
@@ -27,7 +29,17 @@ void Amen::Platform::Init()
 	//Implement Window::Create()
 	Amen::Window* Amen::Window::Create(const Amen::WindowProps& props)
 	{
-		return new GLFW_Window(props);
+		//Create the window.
+		GLFW_Window *window = new GLFW_Window(props);
+
+		//Get the GLFW window.
+		GLFWwindow* glfw_window = static_cast<GLFWwindow*>( window->GetNativeWindow() );
+
+		//Create the OpenGLRenderer.
+		new OpenGLRenderer( (GLADloadproc)glfwGetProcAddress );
+
+		//Return  the window.
+		return window;
 	}
 
 	//Implement ImguiLayer::Create()
@@ -35,4 +47,5 @@ void Amen::Platform::Init()
 	{
 		return new ImGuiGLFWLayer();
 	}
+
 #endif

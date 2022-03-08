@@ -48,7 +48,7 @@ namespace Amen
 
 		protected:
 			Window& m_window;
-			bool m_showDemoWindow = true;
+			bool m_showDemoWindow = false;
 
 	};
 }

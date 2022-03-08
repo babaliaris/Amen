@@ -53,7 +53,7 @@ void Amen::ImGuiGLFWLayer::OnAttach()
 	}
 
 	//Initialize opengl and glfw implementations.
-	ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_window.GetNativeWindow(), true);
+	ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_window.GetNativeWindow(), false);
 	ImGui_ImplOpenGL3_Init("#version 330");
 }
 
@@ -98,5 +98,14 @@ void Amen::ImGuiGLFWLayer::End()
 
 void Amen::ImGuiGLFWLayer::OnImGuiRender()
 {
-	ImGui::ShowDemoWindow(&m_showDemoWindow);
+	if (m_showDemoWindow)
+		ImGui::ShowDemoWindow(&m_showDemoWindow);
+}
+
+
+
+
+
+void Amen::ImGuiGLFWLayer::OnEvent(Event& e)
+{
 }
