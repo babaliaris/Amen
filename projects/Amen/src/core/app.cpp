@@ -5,7 +5,12 @@
 #include <core/events/application_events.h>
 #include <core/imgui/imguiLayer.h>
 #include <core/events/Input.h>
+
 #include <core/Render/Renderer.h>
+#include <core/Render/Buffer.h>
+
+#include <platform/OpenGL/glcall.h>
+#include <glad/glad.h>
 
 //-------------------------------Static Initializations-------------------------------//
 
@@ -36,6 +41,9 @@ Amen::App::App() : m_window(nullptr)
 	//Create the ImGuiLayer.
 	m_ImGuiLayer = ImguiLayer::Create();
 
+	//Disable ImGui Demo Window.
+	static_cast<ImguiLayer*>(m_ImGuiLayer)->SetShowDemoWindow(false);
+
 	//Push the ImGui Layer.
 	PushLayer(m_ImGuiLayer);
 }
@@ -54,10 +62,38 @@ Amen::App::~App()
 }
 
 
-
+#include <core/Render/Shader.h>
 
 void Amen::App::Run()
 {
+
+	float vertexData[] =
+	{
+		//Positions				//Colors			//Texture Coordinates
+		-0.5f, -0.5f, 0.0f,		1.0f, 0.0f, 0.0f,	0.0f, 0.0f,	//0
+		 0.5f, -0.5f, 0.0f,		0.0f, 1.0f, 0.0f,	1.0f, 0.0f,	//1
+		 0.0f,  0.5f, 0.0f,		0.0f, 0.0f, 1.0f,	0.5f, 0.5f	//2
+	};
+
+	unsigned int indexData[] =
+	{
+		2, 1, 0
+	};
+
+	BufferLayout layout = {
+		{"Positions", ShaderType::FLOAT3},
+		{"Colors", ShaderType::FLOAT3},
+		{"Texture Coordinates", ShaderType::FLOAT2}
+	};
+
+	VertexBuffer *vertexBuffer = VertexBuffer::Create(vertexData, sizeof(vertexData));
+	vertexBuffer->SetLayout(layout);
+
+	IndexBuffer* indexBuffer = IndexBuffer::Create(indexData, 3);
+	ArrayBuffer* arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
+
+	Shader *shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/simple_triangle.glsl"));
+
 	//Set the Clear Color to dark gray.
 	Renderer::Get().SetClearColor(0.2, 0.2, 0.2, 1);
 
@@ -83,10 +119,19 @@ void Amen::App::Run()
 		//End ImGUI Frame.
 		static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
 
+		arrayBuffer->Bind();
+		shader->Bind();
+		GLCall(glDrawElements(GL_TRIANGLES, indexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr));
+		arrayBuffer->UnBind();
+		shader->UnBind();
+
 		//Must be last.
 		//Poll the events and swap the buffers.
 		m_window->Update();
 	}
+
+	delete shader;
+	delete arrayBuffer;
 }
 
 

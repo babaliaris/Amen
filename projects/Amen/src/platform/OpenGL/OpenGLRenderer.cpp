@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "OpenGLRenderer.h"
+#include "glcall.h"
 #include <core/logger.h>
 
 
@@ -15,10 +16,10 @@ Amen::OpenGLRenderer::OpenGLRenderer(GLADloadproc proc)
 
 void Amen::OpenGLRenderer::SetClearColor(float r, float g, float b, float a)
 {
-	glClearColor(r, g, b, a);
+	GLCall(glClearColor(r, g, b, a));
 }
 
 void Amen::OpenGLRenderer::ClearColorBuffer()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }

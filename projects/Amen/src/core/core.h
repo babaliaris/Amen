@@ -41,6 +41,18 @@
 #endif
 
 
+//If we are running through Visual Studio, we are relative to the client project.
+#ifdef _MSC_VER
+	#define AMEN_RELATIVE(path) std::string("../Amen/") + std::string(path)
+
+
+//If we are running through the command line, concatenate the path relative to the project's root dir.
+#else
+	#define AMEN_RELATIVE(path) std::string("projects/Amen/") + std::string(path)
+
+#endif
+
+
 
 #define AMEN_TOSTRING(symbol) #symbol
 
