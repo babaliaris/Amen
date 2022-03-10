@@ -157,6 +157,9 @@ namespace Amen
 			ArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer);
 			static ArrayBuffer* Create(VertexBuffer *vertexBuffer, IndexBuffer *indexBuffer);
 
+			inline VertexBuffer& GetVertexBuffer() const { return *m_vertexBuffer; }
+			inline IndexBuffer& GetIndexBuffer() const { return *m_indexBuffer; }
+
 		public:
 			virtual ~ArrayBuffer();
 			virtual void Bind() = 0;

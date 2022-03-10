@@ -1,21 +1,16 @@
 #pragma once
+#include <core/Render/RendererAPI.h>
+#include <core/Render/Buffer.h>
+#include <core/Render/Shader.h>
 
 namespace Amen
 {
-	class Renderer
+	class AMEN_API Renderer
 	{
 		public:
-			inline static Renderer& Get() { return *s_instance; }
 
-		public:
-			virtual void SetClearColor(float r, float g, float b, float a) = 0;
-			virtual void ClearColorBuffer() = 0;
-
-
-		protected:
-			Renderer();
-
-		private:
-			static Renderer* s_instance;
+			static void BeginScene();
+			static void EndScene();
+			static void Submit(Shader& shader, ArrayBuffer& buffer);
 	};
 }

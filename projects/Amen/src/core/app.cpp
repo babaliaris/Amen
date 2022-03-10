@@ -6,11 +6,10 @@
 #include <core/imgui/imguiLayer.h>
 #include <core/events/Input.h>
 
-#include <core/Render/Renderer.h>
+#include <core/Render/Shader.h>
+#include <core/Render/RendererCommand.h>
 #include <core/Render/Buffer.h>
-
-#include <platform/OpenGL/glcall.h>
-#include <glad/glad.h>
+#include <core/Render/Renderer.h>
 
 //-------------------------------Static Initializations-------------------------------//
 
@@ -62,7 +61,6 @@ Amen::App::~App()
 }
 
 
-#include <core/Render/Shader.h>
 
 void Amen::App::Run()
 {
@@ -95,12 +93,12 @@ void Amen::App::Run()
 	Shader *shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/simple_triangle.glsl"));
 
 	//Set the Clear Color to dark gray.
-	Renderer::Get().SetClearColor(0.2, 0.2, 0.2, 1);
+	RendererCommand::SetClearColor(0.2, 0.2, 0.2, 1);
 
 	while (m_running)
 	{
 		//Clear the Color Buffer.
-		Renderer::Get().ClearColorBuffer();
+		RendererCommand::ClearColorBuffer();
 
 		//Begin ImGUI Frame.
 		static_cast<ImguiLayer *>(m_ImGuiLayer)->Begin();
@@ -119,11 +117,9 @@ void Amen::App::Run()
 		//End ImGUI Frame.
 		static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
 
-		arrayBuffer->Bind();
-		shader->Bind();
-		GLCall(glDrawElements(GL_TRIANGLES, indexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr));
-		arrayBuffer->UnBind();
-		shader->UnBind();
+		Renderer::BeginScene();
+		Renderer::Submit(*shader, *arrayBuffer);
+		Renderer::EndScene();
 
 		//Must be last.
 		//Poll the events and swap the buffers.

@@ -1,18 +1,29 @@
 #include "pch.h"
 #include "Renderer.h"
-#include <core/logger.h>
 
-
-
-
-Amen::Renderer* Amen::Renderer::s_instance = nullptr;
-
-
-
-
-
-Amen::Renderer::Renderer()
+void Amen::Renderer::BeginScene()
 {
-	AMEN_ASSERT(s_instance == nullptr, "Already another instance? This is a singleton!");
-	s_instance = this;
+}
+
+
+
+
+
+void Amen::Renderer::EndScene()
+{
+}
+
+
+
+
+
+void Amen::Renderer::Submit(Shader& shader, ArrayBuffer& buffer)
+{
+	shader.Bind();
+	buffer.Bind();
+
+	RendererAPI::Get().DrawIndexed(buffer.GetIndexBuffer().GetCount());
+
+	shader.UnBind();
+	buffer.UnBind();
 }

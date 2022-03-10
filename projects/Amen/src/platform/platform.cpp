@@ -3,7 +3,7 @@
 #include <core/window.h>
 #include <platform/glfw/glfw_window.h>
 #include <platform/glfw/ImGuiGLFWLayer.h>
-#include <platform/OpenGL/OpenGLRenderer.h>
+#include <platform/OpenGL/OpenGLRendererAPI.h>
 #include <GLFW/glfw3.h>
 
 //Initialize the s_type static variable.
@@ -36,7 +36,7 @@ void Amen::Platform::Init()
 		GLFWwindow* glfw_window = static_cast<GLFWwindow*>( window->GetNativeWindow() );
 
 		//Create the OpenGLRenderer.
-		new OpenGLRenderer( (GLADloadproc)glfwGetProcAddress );
+		new OpenGLRendererAPI( (GLADloadproc)glfwGetProcAddress );
 
 		//Return  the window.
 		return window;
