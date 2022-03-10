@@ -12,6 +12,11 @@ namespace Amen
 				RendererAPI::Get().SetClearColor(r, g, b, a);
 			};
 
+			inline static void SetViewport(int x, int y, int width, int height)
+			{
+				RendererAPI::Get().SetViewport(x, y, width, height);
+			}
+
 			inline static void ClearColorBuffer()
 			{
 				RendererAPI::Get().ClearColorBuffer();

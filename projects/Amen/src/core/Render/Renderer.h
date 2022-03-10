@@ -2,6 +2,7 @@
 #include <core/Render/RendererAPI.h>
 #include <core/Render/Buffer.h>
 #include <core/Render/Shader.h>
+#include <core/Render/Cameras/Camera.h>
 
 namespace Amen
 {
@@ -9,8 +10,11 @@ namespace Amen
 	{
 		public:
 
-			static void BeginScene();
+			static void BeginScene(Camera& camera);
 			static void EndScene();
 			static void Submit(Shader& shader, ArrayBuffer& buffer);
+
+		private:
+			static Camera* s_ActiveCamera;
 	};
 }

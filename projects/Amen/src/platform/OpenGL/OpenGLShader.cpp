@@ -163,6 +163,29 @@ void Amen::OpenGLShader::UnBind()
 
 
 
+
+void Amen::OpenGLShader::UploadMat(const std::string& uniformName, const glm::mat4& mat)
+{
+	this->Bind();
+
+	GLCall( GLint location = glGetUniformLocation(m_id, uniformName.c_str()) );
+
+	if (location == -1)
+	{
+		AMEN_WARN("Uniform = \"%s\" location was not found.", uniformName.c_str());
+	}
+
+	else
+	{
+		GLCall( glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat)) );
+	}
+
+	this->UnBind();
+}
+
+
+
+
 //Load a shader from a file.
 ShaderSources LoadShaderFromFile(const std::string& path)
 {

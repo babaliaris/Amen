@@ -12,6 +12,7 @@ namespace Amen
 		public:
 			virtual void SetClearColor(float r, float g, float b, float a) override;
 			virtual void ClearColorBuffer() override;
+			virtual void SetViewport(int x, int y, int width, int height) override;
 			virtual void DrawIndexed(unsigned int count) override;
 	};
 }

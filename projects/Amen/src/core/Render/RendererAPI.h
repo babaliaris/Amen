@@ -14,6 +14,7 @@ namespace Amen
 		protected:
 			virtual void SetClearColor(float r, float g, float b, float a) = 0;
 			virtual void ClearColorBuffer() = 0;
+			virtual void SetViewport(int x, int y, int width, int height) = 0;
 			virtual void DrawIndexed(unsigned int count) = 0;
 
 

@@ -31,6 +31,14 @@ void Amen::OpenGLRendererAPI::ClearColorBuffer()
 
 
 
+void Amen::OpenGLRendererAPI::SetViewport(int x, int y, int width, int height)
+{
+	glViewport(x, y, width, height);
+}
+
+
+
+
 
 void Amen::OpenGLRendererAPI::DrawIndexed(unsigned int count)
 {

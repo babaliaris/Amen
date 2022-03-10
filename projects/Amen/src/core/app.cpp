@@ -10,6 +10,7 @@
 #include <core/Render/RendererCommand.h>
 #include <core/Render/Buffer.h>
 #include <core/Render/Renderer.h>
+#include <core/Render/Cameras/OrthographicCamera.h>
 
 //-------------------------------Static Initializations-------------------------------//
 
@@ -90,10 +91,18 @@ void Amen::App::Run()
 	IndexBuffer* indexBuffer = IndexBuffer::Create(indexData, 3);
 	ArrayBuffer* arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
 
-	Shader *shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/simple_triangle.glsl"));
+	Shader *shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mv_triangle.glsl"));
+
+	Camera::OrthographicProps props = { 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f };
+	OrthographicCamera camera(props);
+	camera.SetMovementSpeed(0.001f);
+	camera.SetRotationSpeed(0.1f);
 
 	//Set the Clear Color to dark gray.
 	RendererCommand::SetClearColor(0.2, 0.2, 0.2, 1);
+
+	//Set the viewport.
+	RendererCommand::SetViewport(0, 0, m_window->GetWidth(), m_window->GetHeight());
 
 	while (m_running)
 	{
@@ -117,7 +126,43 @@ void Amen::App::Run()
 		//End ImGUI Frame.
 		static_cast<ImguiLayer*>(m_ImGuiLayer)->End();
 
-		Renderer::BeginScene();
+		if (Input::GetKeyDown(KeyboardE::k_up))
+		{
+			AMEN_INFO("Camera::MovementE::FORWARD");
+			camera.Move(Camera::MovementE::FORWARD);
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_down))
+		{
+			AMEN_INFO("Camera::MovementE::BACKWARD");
+			camera.Move(Camera::MovementE::BACKWARD);
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_left))
+		{
+			AMEN_INFO("Camera::MovementE::LEFT");
+			camera.Move(Camera::MovementE::LEFT);
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_right))
+		{
+			AMEN_INFO("Camera::MovementE::RIGHT");
+			camera.Move(Camera::MovementE::RIGHT);
+		}
+
+		if (Input::GetKeyDown(KeyboardE::kp_4))
+		{
+			AMEN_INFO("Camera::MovementE::ROLL_LEFT");
+			camera.Move(Camera::MovementE::ROLL_LEFT);
+		}
+
+		if (Input::GetKeyDown(KeyboardE::kp_6))
+		{
+			AMEN_INFO("Camera::MovementE::ROLL_RIGHT");
+			camera.Move(Camera::MovementE::ROLL_RIGHT);
+		}
+
+		Renderer::BeginScene(camera);
 		Renderer::Submit(*shader, *arrayBuffer);
 		Renderer::EndScene();
 
@@ -164,7 +209,7 @@ void Amen::App::OnEvent(Event& e)
 	disp.Dispatch<WindowClosedEvent>([this](WindowClosedEvent event)
 	{	
 		m_running = false;
-		return true;
+		return false;
 	});
 
 
@@ -173,7 +218,7 @@ void Amen::App::OnEvent(Event& e)
 	{
 		m_paused = true;
 		AMEN_INFO("Amen Paused...");
-		return true;
+		return false;
 	});
 
 
@@ -182,7 +227,15 @@ void Amen::App::OnEvent(Event& e)
 	{
 		m_paused = false;
 		AMEN_INFO("Amen Resumed...");
-		return true;
+		return false;
+	});
+
+
+	//On WindowResizedEvent, set the viewport.
+	disp.Dispatch<WindowResizedEvent>([this](WindowResizedEvent event)
+	{
+		RendererCommand::SetViewport(0, 0, event.GetWidth(), event.GetHeight());
+		return false;
 	});
 
 
