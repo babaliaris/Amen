@@ -516,8 +516,212 @@ namespace Amen
 
 			static int KeyToGLFW(KeyboardE key)
 			{
-				AMEN_ASSERT(false, "Not implemented yet");
-				return 0;
+				switch (key)
+				{
+					case Amen::KeyboardE::k_uknown:
+						return GLFW_KEY_U;
+					case Amen::KeyboardE::k_escape:
+						return GLFW_KEY_ESCAPE;
+					case Amen::KeyboardE::k_f1:
+						return GLFW_KEY_F1;
+					case Amen::KeyboardE::k_f2:
+						return GLFW_KEY_F2;
+					case Amen::KeyboardE::k_f3:
+						return GLFW_KEY_F3;
+					case Amen::KeyboardE::k_f4:
+						return GLFW_KEY_F4;
+					case Amen::KeyboardE::k_f5:
+						return GLFW_KEY_F5;
+					case Amen::KeyboardE::k_f6:
+						return GLFW_KEY_F6;
+					case Amen::KeyboardE::k_f7:
+						return GLFW_KEY_F7;
+					case Amen::KeyboardE::k_f8:
+						return GLFW_KEY_F8;
+					case Amen::KeyboardE::k_f9:
+						return GLFW_KEY_F9;
+					case Amen::KeyboardE::k_f10:
+						return GLFW_KEY_F10;
+					case Amen::KeyboardE::k_f11:
+						return GLFW_KEY_F11;
+					case Amen::KeyboardE::k_f12:
+						return GLFW_KEY_F12;
+					case Amen::KeyboardE::k_tilde:
+						return GLFW_KEY_GRAVE_ACCENT;
+					case Amen::KeyboardE::k_1:
+						return GLFW_KEY_1;
+					case Amen::KeyboardE::k_2:
+						return GLFW_KEY_2;
+					case Amen::KeyboardE::k_3:
+						return GLFW_KEY_3;
+					case Amen::KeyboardE::k_4:
+						return GLFW_KEY_4;
+					case Amen::KeyboardE::k_5:
+						return GLFW_KEY_5;
+					case Amen::KeyboardE::k_6:
+						return GLFW_KEY_6;
+					case Amen::KeyboardE::k_7:
+						return GLFW_KEY_7;
+					case Amen::KeyboardE::k_8:
+						return GLFW_KEY_8;
+					case Amen::KeyboardE::k_9:
+						return GLFW_KEY_9;
+					case Amen::KeyboardE::k_0:
+						return GLFW_KEY_0;
+					case Amen::KeyboardE::k_minus:
+						return GLFW_KEY_MINUS;
+					case Amen::KeyboardE::k_plus:
+						return GLFW_KEY_EQUAL;
+					case Amen::KeyboardE::k_backspace:
+						return GLFW_KEY_BACKSPACE;
+					case Amen::KeyboardE::k_insert:
+						return GLFW_KEY_INSERT;
+					case Amen::KeyboardE::k_home:
+						return GLFW_KEY_HOME;
+					case Amen::KeyboardE::k_pageup:
+						return GLFW_KEY_PAGE_UP;
+					case Amen::KeyboardE::k_tab:
+						return GLFW_KEY_TAB;
+					case Amen::KeyboardE::k_q:
+						return GLFW_KEY_Q;
+					case Amen::KeyboardE::k_w:
+						return GLFW_KEY_W;
+					case Amen::KeyboardE::k_e:
+						return GLFW_KEY_E;
+					case Amen::KeyboardE::k_r:
+						return GLFW_KEY_R;
+					case Amen::KeyboardE::k_t:
+						return GLFW_KEY_T;
+					case Amen::KeyboardE::k_y:
+						return GLFW_KEY_Y;
+					case Amen::KeyboardE::k_u:
+						return GLFW_KEY_U;
+					case Amen::KeyboardE::k_i:
+						return GLFW_KEY_I;
+					case Amen::KeyboardE::k_o:
+						return GLFW_KEY_O;
+					case Amen::KeyboardE::k_p:
+						return GLFW_KEY_P;
+					case Amen::KeyboardE::k_left_bracket:
+						return GLFW_KEY_LEFT_BRACKET;
+					case Amen::KeyboardE::k_right_bracket:
+						return GLFW_KEY_RIGHT_BRACKET;
+					case Amen::KeyboardE::k_backslash:
+						return GLFW_KEY_BACKSLASH;
+					case Amen::KeyboardE::k_delet:
+						return GLFW_KEY_DELETE;
+					case Amen::KeyboardE::k_end:
+						return GLFW_KEY_END;
+					case Amen::KeyboardE::k_pagedown:
+						return GLFW_KEY_PAGE_DOWN;
+					case Amen::KeyboardE::k_caps:
+						return GLFW_KEY_CAPS_LOCK;
+					case Amen::KeyboardE::k_a:
+						return GLFW_KEY_A;
+					case Amen::KeyboardE::k_s:
+						return GLFW_KEY_S;
+					case Amen::KeyboardE::k_d:
+						return GLFW_KEY_D;
+					case Amen::KeyboardE::k_f:
+						return GLFW_KEY_F;
+					case Amen::KeyboardE::k_g:
+						return GLFW_KEY_G;
+					case Amen::KeyboardE::k_h:
+						return GLFW_KEY_H;
+					case Amen::KeyboardE::k_j:
+						return GLFW_KEY_J;
+					case Amen::KeyboardE::k_k:
+						return GLFW_KEY_K;
+					case Amen::KeyboardE::k_l:
+						return GLFW_KEY_L;
+					case Amen::KeyboardE::k_semicolon:
+						return GLFW_KEY_SEMICOLON;
+					case Amen::KeyboardE::k_quotes:
+						return GLFW_KEY_APOSTROPHE;
+					case Amen::KeyboardE::k_enter:
+						return GLFW_KEY_ENTER;
+					case Amen::KeyboardE::k_left_shift:
+						return GLFW_KEY_LEFT_SHIFT;
+					case Amen::KeyboardE::k_z:
+						return GLFW_KEY_Z;
+					case Amen::KeyboardE::k_x:
+						return GLFW_KEY_X;
+					case Amen::KeyboardE::k_c:
+						return GLFW_KEY_C;
+					case Amen::KeyboardE::k_v:
+						return GLFW_KEY_V;
+					case Amen::KeyboardE::k_b:
+						return GLFW_KEY_B;
+					case Amen::KeyboardE::k_n:
+						return GLFW_KEY_N;
+					case Amen::KeyboardE::k_m:
+						return GLFW_KEY_M;
+					case Amen::KeyboardE::k_less:
+						return GLFW_KEY_COMMA;
+					case Amen::KeyboardE::k_greater:
+						return GLFW_KEY_PERIOD;
+					case Amen::KeyboardE::k_question:
+						return GLFW_KEY_SLASH;
+					case Amen::KeyboardE::k_right_shift:
+						return GLFW_KEY_RIGHT_SHIFT;
+					case Amen::KeyboardE::k_up:
+						return GLFW_KEY_UP;
+					case Amen::KeyboardE::k_left_control:
+						return GLFW_KEY_LEFT_CONTROL;
+					case Amen::KeyboardE::k_super:
+						return GLFW_KEY_LEFT_SUPER;
+					case Amen::KeyboardE::k_left_alt:
+						return GLFW_KEY_LEFT_ALT;
+					case Amen::KeyboardE::k_space:
+						return GLFW_KEY_SPACE;
+					case Amen::KeyboardE::k_right_alt:
+						return GLFW_KEY_RIGHT_ALT;
+					case Amen::KeyboardE::k_right_control:
+						return GLFW_KEY_RIGHT_CONTROL;
+					case Amen::KeyboardE::k_left:
+						return GLFW_KEY_LEFT;
+					case Amen::KeyboardE::k_down:
+						return GLFW_KEY_DOWN;
+					case Amen::KeyboardE::k_right:
+						return GLFW_KEY_RIGHT;
+					case Amen::KeyboardE::kp_slash:
+						return GLFW_KEY_KP_DIVIDE;
+					case Amen::KeyboardE::kp_asterisk:
+						return GLFW_KEY_KP_MULTIPLY;
+					case Amen::KeyboardE::kp_minus:
+						return GLFW_KEY_KP_SUBTRACT;
+					case Amen::KeyboardE::kp_plus:
+						return GLFW_KEY_KP_ADD;
+					case Amen::KeyboardE::kp_enter:
+						return GLFW_KEY_KP_ENTER;
+					case Amen::KeyboardE::kp_comma:
+						return GLFW_KEY_KP_DECIMAL;
+					case Amen::KeyboardE::kp_1:
+						return GLFW_KEY_KP_1;
+					case Amen::KeyboardE::kp_2:
+						return GLFW_KEY_KP_2;
+					case Amen::KeyboardE::kp_3:
+						return GLFW_KEY_KP_3;
+					case Amen::KeyboardE::kp_4:
+						return GLFW_KEY_KP_4;
+					case Amen::KeyboardE::kp_5:
+						return GLFW_KEY_KP_5;
+					case Amen::KeyboardE::kp_6:
+						return GLFW_KEY_KP_6;
+					case Amen::KeyboardE::kp_7:
+						return GLFW_KEY_KP_7;
+					case Amen::KeyboardE::kp_8:
+						return GLFW_KEY_KP_8;
+					case Amen::KeyboardE::kp_9:
+						return GLFW_KEY_KP_9;
+					case Amen::KeyboardE::kp_0:
+						return GLFW_KEY_KP_0;
+					default:
+					{
+						AMEN_ASSERT(false, "This line should not be reached...");
+						return GLFW_KEY_UNKNOWN;
+					}
+				}
 			}
 
 
@@ -542,7 +746,10 @@ namespace Amen
 						return Amen::MouseButtonE::button_extra2;
 
 					default:
+					{
+						AMEN_ASSERT(false, "This line should not be reached...");
 						return Amen::MouseButtonE::button_uknown;
+					}
 				}
 			}
 
@@ -568,8 +775,11 @@ namespace Amen
 						return GLFW_MOUSE_BUTTON_5;
 
 					default:
+					{
+						AMEN_ASSERT(false, "This line should not be reached...");
 						return GLFW_KEY_UNKNOWN;
 					}
+				}
 			}
 	};
 }

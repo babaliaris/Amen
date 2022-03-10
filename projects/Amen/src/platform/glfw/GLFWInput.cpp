@@ -14,8 +14,9 @@ Amen::GLFWInput::GLFWInput(): m_window( static_cast<GLFWwindow *>(App::Get().Get
 
 bool Amen::GLFWInput::GetKeyDownImp(KeyboardE key)
 {
-	AMEN_ASSERT(false, "Hasn't been implemented yet.");
-	return false;
+	int state = glfwGetKey(m_window, GlfwToAmen::KeyToGLFW(key) );
+
+	return (state == GLFW_PRESS ? true : false) || (state == GLFW_REPEAT ? true : false);
 }
 
 
@@ -24,8 +25,9 @@ bool Amen::GLFWInput::GetKeyDownImp(KeyboardE key)
 
 bool Amen::GLFWInput::GetKeyUpImp(KeyboardE key)
 {
-	AMEN_ASSERT(false, "Hasn't been implemented yet.");
-	return false;
+	int state = glfwGetKey(m_window, GlfwToAmen::KeyToGLFW(key));
+
+	return (state == GLFW_RELEASE ? true : false);
 }
 
 
