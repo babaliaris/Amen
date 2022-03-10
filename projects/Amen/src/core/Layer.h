@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <core/events/event.h>
+#include <core/Timestep.h>
 
 /**
 * Root namespace of Amen Engine.
@@ -27,7 +28,7 @@ namespace Amen
 			* It's been called every frame.
 			*
 			*/
-			virtual void OnUpdate() {};
+			virtual void OnUpdate(Timestep deltaTime) {};
 
 			/**
 			* It's been called when an event is triggered.

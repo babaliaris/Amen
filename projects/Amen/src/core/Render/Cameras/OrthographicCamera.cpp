@@ -52,27 +52,27 @@ void Amen::OrthographicCamera::RecalculateMatrices(RecalculateReasonE reason)
 
 
 
-void Amen::OrthographicCamera::MoveImpl(MovementE movement)
+void Amen::OrthographicCamera::MoveImpl(MovementE movement, const Timestep& deltaTime)
 {
 	switch (movement)
 	{
 		case Amen::Camera::MovementE::FORWARD:
-			m_pos.y += m_movementSpeed;
+			m_pos.y += m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::BACKWARD:
-			m_pos.y -= m_movementSpeed;
+			m_pos.y -= m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::LEFT:
-			m_pos.x -= m_movementSpeed;
+			m_pos.x -= m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::RIGHT:
-			m_pos.x += m_movementSpeed;
+			m_pos.x += m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::ROLL_LEFT:
-			m_RotationZ += m_rotationSpeed;
+			m_RotationZ += m_rotationSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::ROLL_RIGHT:
-			m_RotationZ -= m_rotationSpeed;
+			m_RotationZ -= m_rotationSpeed * deltaTime.GetTimeSeconds();
 			break;
 		case Amen::Camera::MovementE::ROTATE_LEFT:
 			break;

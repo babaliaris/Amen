@@ -1,6 +1,6 @@
 #include "testLayer.h"
 
-void TestLayer::OnUpdate()
+void TestLayer::OnUpdate(Amen::Timestep deltaTime)
 {
 }
 

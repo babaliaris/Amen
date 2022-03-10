@@ -66,6 +66,9 @@ Amen::App::~App()
 void Amen::App::Run()
 {
 
+	double currentTime = 0.0f;
+	double prevTime = 0.0f;
+
 	float vertexData[] =
 	{
 		//Positions				//Colors			//Texture Coordinates
@@ -95,8 +98,8 @@ void Amen::App::Run()
 
 	Camera::OrthographicProps props = { 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f };
 	OrthographicCamera camera(props);
-	camera.SetMovementSpeed(0.001f);
-	camera.SetRotationSpeed(0.1f);
+	camera.SetMovementSpeed(3.0f);
+	camera.SetRotationSpeed(40.0f);
 
 	//Set the Clear Color to dark gray.
 	RendererCommand::SetClearColor(0.2, 0.2, 0.2, 1);
@@ -106,6 +109,11 @@ void Amen::App::Run()
 
 	while (m_running)
 	{
+		//Calculate the delta time timesptep.
+		currentTime = m_window->GetTime();
+		Timestep deltaTime(currentTime - prevTime);
+		prevTime = currentTime;
+
 		//Clear the Color Buffer.
 		RendererCommand::ClearColorBuffer();
 
@@ -118,7 +126,7 @@ void Amen::App::Run()
 			//If the application if not paused.
 			if (!m_paused)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(deltaTime);
 				layer->OnImGuiRender();
 			}
 		}
@@ -129,37 +137,37 @@ void Amen::App::Run()
 		if (Input::GetKeyDown(KeyboardE::k_up))
 		{
 			AMEN_INFO("Camera::MovementE::FORWARD");
-			camera.Move(Camera::MovementE::FORWARD);
+			camera.Move(Camera::MovementE::FORWARD, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_down))
 		{
 			AMEN_INFO("Camera::MovementE::BACKWARD");
-			camera.Move(Camera::MovementE::BACKWARD);
+			camera.Move(Camera::MovementE::BACKWARD, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_left))
 		{
 			AMEN_INFO("Camera::MovementE::LEFT");
-			camera.Move(Camera::MovementE::LEFT);
+			camera.Move(Camera::MovementE::LEFT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_right))
 		{
 			AMEN_INFO("Camera::MovementE::RIGHT");
-			camera.Move(Camera::MovementE::RIGHT);
+			camera.Move(Camera::MovementE::RIGHT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::kp_4))
 		{
 			AMEN_INFO("Camera::MovementE::ROLL_LEFT");
-			camera.Move(Camera::MovementE::ROLL_LEFT);
+			camera.Move(Camera::MovementE::ROLL_LEFT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::kp_6))
 		{
 			AMEN_INFO("Camera::MovementE::ROLL_RIGHT");
-			camera.Move(Camera::MovementE::ROLL_RIGHT);
+			camera.Move(Camera::MovementE::ROLL_RIGHT, deltaTime);
 		}
 
 		Renderer::BeginScene(camera);

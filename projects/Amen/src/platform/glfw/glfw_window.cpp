@@ -123,6 +123,14 @@ void Amen::GLFW_Window::SetVSync(bool enabled)
 
 
 
+double Amen::GLFW_Window::GetTime() const
+{
+	return glfwGetTime();
+}
+
+
+
+
 void Amen::GLFW_Window::InitilizeCallbacks() const
 {
 	glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)

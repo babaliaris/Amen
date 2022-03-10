@@ -5,7 +5,7 @@ class TestLayer: public Amen::Layer
 {
 	public:
 
-		virtual void OnUpdate() override;
+		virtual void OnUpdate(Amen::Timestep deltaTime) override;
 
 
 		virtual void OnEvent(Amen::Event& e) override;

@@ -2,6 +2,7 @@
 #include <glm/glm.hpp>
 #include <core/Render/Shader.h>
 #include <core/core.h>
+#include <core/Timestep.h>
 
 namespace Amen
 {
@@ -90,9 +91,9 @@ namespace Amen
 				RecalculateMatrices(RecalculateReasonE::PROPS_CHANGED); 
 			}
 
-			inline void Move(MovementE movement)
+			inline void Move(MovementE movement, const Timestep& deltaTime)
 			{
-				this->MoveImpl(movement);
+				this->MoveImpl(movement, deltaTime);
 				m_reason = RecalculateReasonE::POSITION_CHANGED;
 				RecalculateMatrices(RecalculateReasonE::POSITION_CHANGED);
 			}
@@ -114,7 +115,7 @@ namespace Amen
 
 			virtual void RecalculateMatrices(RecalculateReasonE reason) = 0;
 
-			virtual void MoveImpl(MovementE movement) {}
+			virtual void MoveImpl(MovementE movement, const Timestep& deltaTime) {}
 
 
 		protected:

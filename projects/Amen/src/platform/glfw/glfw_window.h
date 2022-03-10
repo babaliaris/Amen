@@ -49,6 +49,7 @@ namespace Amen
 		inline const std::string& GetTitle() const override { return m_data.m_title; };
 		inline void* GetNativeWindow() const override { return m_window; };
 		inline bool IsVSynced() const override { return m_data.m_vSynced; }
+		virtual double GetTime() const override;
 
 
 		private:

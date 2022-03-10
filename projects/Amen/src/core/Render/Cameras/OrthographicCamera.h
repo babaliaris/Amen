@@ -14,7 +14,7 @@ namespace Amen
 
 		protected:
 			virtual void RecalculateMatrices(RecalculateReasonE reason) override;
-			virtual void MoveImpl(MovementE movement) override;
+			virtual void MoveImpl(MovementE movement, const Timestep& deltaTime) override;
 
 		private:
 			float m_RotationZ;

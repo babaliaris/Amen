@@ -104,6 +104,14 @@ namespace Amen
 
 
 		/**
+		* Get the time in seconds.
+		*
+		* @return the time since the creation in seconds.
+		*/
+		virtual double GetTime() const = 0;
+
+
+		/**
 		* Get the native window.
 		*
 		* @return the native window as void *.
