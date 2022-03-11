@@ -92,7 +92,7 @@ void Amen::OpenGLIndexBuffer::UnBind()
 
 
 
-Amen::OpenGLArrayBuffer::OpenGLArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer)
+Amen::OpenGLArrayBuffer::OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 	: ArrayBuffer(vertexBuffer, indexBuffer), m_id(0)
 {
 	GLCall(glGenVertexArrays(1, &m_id));

@@ -25,21 +25,21 @@ void Amen::Renderer::EndScene()
 
 
 
-void Amen::Renderer::Submit(Shader& shader, ArrayBuffer& buffer)
+void Amen::Renderer::Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer)
 {
 	//Upload View and Projection matrices.
 	if (s_ActiveCamera->GetReason() != Camera::RecalculateReasonE::NONE)
 	{
-		shader.UploadMat("u_View", s_ActiveCamera->GetView());
-		shader.UploadMat("u_Proj", s_ActiveCamera->GetProj());
+		shader->UploadMat("u_View", s_ActiveCamera->GetView());
+		shader->UploadMat("u_Proj", s_ActiveCamera->GetProj());
 		s_ActiveCamera->m_reason = Camera::RecalculateReasonE::NONE;
 	}
 
-	shader.Bind();
-	buffer.Bind();
+	shader->Bind();
+	buffer->Bind();
 
-	RendererAPI::Get().DrawIndexed(buffer.GetIndexBuffer().GetCount());
+	RendererAPI::Get().DrawIndexed(buffer->GetIndexBuffer()->GetCount());
 
-	shader.UnBind();
-	buffer.UnBind();
+	shader->UnBind();
+	buffer->UnBind();
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include <core/core.h>
 #include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -8,7 +9,7 @@ namespace Amen
 	class Shader
 	{
 		public:
-			static Shader *Create(const std::string& filePath);
+			static Ref<Shader> Create(const std::string& filePath);
 
 			inline bool IsValid() const { return m_isValid; }
 

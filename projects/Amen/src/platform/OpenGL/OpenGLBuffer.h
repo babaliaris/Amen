@@ -38,7 +38,7 @@ namespace Amen
 	class OpenGLArrayBuffer: public ArrayBuffer
 	{
 		public:
-			OpenGLArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer);
+			OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer);
 
 		public:
 			virtual ~OpenGLArrayBuffer();

@@ -107,7 +107,7 @@ namespace Amen
 	{
 		public:
 
-			static VertexBuffer* Create(const float *data, unsigned int size);
+			static Ref<VertexBuffer> Create(const float *data, unsigned int size);
 
 			void SetLayout(const BufferLayout& layout);
 
@@ -133,7 +133,7 @@ namespace Amen
 	class AMEN_API IndexBuffer
 	{
 		public:
-			static IndexBuffer* Create(unsigned int *data, unsigned int count);
+			static Ref<IndexBuffer> Create(unsigned int *data, unsigned int count);
 
 			inline unsigned int GetCount() const { return m_count; }
 
@@ -154,19 +154,19 @@ namespace Amen
 	class AMEN_API ArrayBuffer
 	{
 		public:
-			ArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer);
-			static ArrayBuffer* Create(VertexBuffer *vertexBuffer, IndexBuffer *indexBuffer);
+			ArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer);
+			static Ref<ArrayBuffer> Create(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer);
 
-			inline VertexBuffer& GetVertexBuffer() const { return *m_vertexBuffer; }
-			inline IndexBuffer& GetIndexBuffer() const { return *m_indexBuffer; }
+			inline Ref<VertexBuffer> GetVertexBuffer() const { return m_vertexBuffer; }
+			inline Ref<IndexBuffer> GetIndexBuffer() const { return m_indexBuffer; }
 
 		public:
-			virtual ~ArrayBuffer();
+			virtual ~ArrayBuffer(){}
 			virtual void Bind() = 0;
 			virtual void UnBind() = 0;
 
 		protected:
-			VertexBuffer* m_vertexBuffer;
-			IndexBuffer* m_indexBuffer;
+			Ref<VertexBuffer> m_vertexBuffer;
+			Ref<IndexBuffer> m_indexBuffer;
 	};
 }

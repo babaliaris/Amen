@@ -51,7 +51,7 @@ namespace Amen
 
 
 		private:
-			static Layer* Create();
+			static Layer * Create();
 
 		protected:
 			Window& m_window;

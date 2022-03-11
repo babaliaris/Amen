@@ -5,10 +5,10 @@
 
 
 
-Amen::VertexBuffer* Amen::VertexBuffer::Create(const float *data, unsigned int size)
+Amen::Ref<Amen::VertexBuffer> Amen::VertexBuffer::Create(const float *data, unsigned int size)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
-		return new OpenGLVertexBuffer(data, size);
+		return Ref<VertexBuffer>(new OpenGLVertexBuffer(data, size));
 	#else
 		return nullptr;
 	#endif
@@ -32,10 +32,10 @@ void Amen::VertexBuffer::SetLayout(const BufferLayout& layout)
 
 
 
-Amen::IndexBuffer* Amen::IndexBuffer::Create(unsigned int*data, unsigned int count)
+Amen::Ref<Amen::IndexBuffer> Amen::IndexBuffer::Create(unsigned int*data, unsigned int count)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
-		return new OpenGLIndexBuffer(data, count);
+		return Ref<IndexBuffer>(new OpenGLIndexBuffer(data, count));
 	#else
 		return nullptr;
 	#endif
@@ -52,7 +52,7 @@ Amen::IndexBuffer::IndexBuffer(unsigned int count)
 
 
 
-Amen::ArrayBuffer::ArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer)
+Amen::ArrayBuffer::ArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 	: m_vertexBuffer(vertexBuffer), m_indexBuffer(indexBuffer)
 {
 }
@@ -60,23 +60,11 @@ Amen::ArrayBuffer::ArrayBuffer(VertexBuffer* vertexBuffer, IndexBuffer* indexBuf
 
 
 
-Amen::ArrayBuffer* Amen::ArrayBuffer::Create(VertexBuffer* vertexBuffer, IndexBuffer* indexBuffer)
+Amen::Ref<Amen::ArrayBuffer> Amen::ArrayBuffer::Create(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
-		return new OpenGLArrayBuffer(vertexBuffer, indexBuffer);
+		return Ref<ArrayBuffer>(new OpenGLArrayBuffer(vertexBuffer, indexBuffer));
 	#else
 		return nullptr;
 	#endif
-}
-
-
-
-
-Amen::ArrayBuffer::~ArrayBuffer()
-{
-	if (m_indexBuffer)
-		delete m_indexBuffer;
-
-	if (m_vertexBuffer)
-		delete m_vertexBuffer;
 }

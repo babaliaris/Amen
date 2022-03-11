@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <memory>
 
 #if defined(AMEN_WINDOWS)
 
@@ -58,3 +58,14 @@
 
 
 #define AMEN_BIND(method) std::bind(&method, this, std::placeholders::_1)
+
+
+
+namespace Amen
+{
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+}

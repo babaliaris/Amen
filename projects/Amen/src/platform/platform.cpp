@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "platform.h"
+#include <core/core.h>
 #include <core/window.h>
 #include <platform/glfw/glfw_window.h>
 #include <platform/glfw/ImGuiGLFWLayer.h>
@@ -27,7 +28,7 @@ void Amen::Platform::Init()
 #if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
 
 	//Implement Window::Create()
-	Amen::Window* Amen::Window::Create(const Amen::WindowProps& props)
+	Amen::Scope<Amen::Window> Amen::Window::Create(const Amen::WindowProps& props)
 	{
 		//Create the window.
 		GLFW_Window *window = new GLFW_Window(props);
@@ -39,7 +40,7 @@ void Amen::Platform::Init()
 		new OpenGLRendererAPI( (GLADloadproc)glfwGetProcAddress );
 
 		//Return  the window.
-		return window;
+		return Amen::Scope<Window>(window);
 	}
 
 	//Implement ImguiLayer::Create()

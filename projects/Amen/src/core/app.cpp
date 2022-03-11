@@ -53,9 +53,6 @@ Amen::App::App() : m_window(nullptr)
 
 Amen::App::~App()
 {
-	//Delete the Window.
-	delete m_window;
-
 	//Delete all the layers.
 	for (Layer* layer : m_layers)
 		delete layer;
@@ -88,13 +85,13 @@ void Amen::App::Run()
 		{"Texture Coordinates", ShaderType::FLOAT2}
 	};
 
-	VertexBuffer *vertexBuffer = VertexBuffer::Create(vertexData, sizeof(vertexData));
+	Ref<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertexData, sizeof(vertexData));
 	vertexBuffer->SetLayout(layout);
 
-	IndexBuffer* indexBuffer = IndexBuffer::Create(indexData, 3);
-	ArrayBuffer* arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
+	Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indexData, 3);
+	Ref<ArrayBuffer> arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
 
-	Shader *shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mv_triangle.glsl"));
+	Ref<Shader> shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mv_triangle.glsl"));
 
 	Camera::OrthographicProps props = { 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f };
 	OrthographicCamera camera(props);
@@ -171,16 +168,13 @@ void Amen::App::Run()
 		}
 
 		Renderer::BeginScene(camera);
-		Renderer::Submit(*shader, *arrayBuffer);
+		Renderer::Submit(shader, arrayBuffer);
 		Renderer::EndScene();
 
 		//Must be last.
 		//Poll the events and swap the buffers.
 		m_window->Update();
 	}
-
-	delete shader;
-	delete arrayBuffer;
 }
 
 

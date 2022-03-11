@@ -128,7 +128,7 @@ namespace Amen
 	protected:
 		virtual void Update() = 0;
 		virtual void SetEventCallback(WindowEventCallback callback) = 0;
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 
 	protected:
 		WindowEventCallback m_eventCallback;

@@ -90,7 +90,7 @@ namespace Amen
 		private:
 			bool m_running = true;
 			bool m_paused = false;
-			Window* m_window;
+			Scope<Window> m_window;
 			std::vector<Layer*> m_layers;
 			Layer* m_ImGuiLayer;
 

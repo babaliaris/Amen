@@ -12,7 +12,7 @@ namespace Amen
 
 			static void BeginScene(Camera& camera);
 			static void EndScene();
-			static void Submit(Shader& shader, ArrayBuffer& buffer);
+			static void Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer);
 
 		private:
 			static Camera* s_ActiveCamera;
