@@ -12,6 +12,7 @@ namespace Amen
 			virtual void UnBind() override;
 
 			virtual void UploadMat(const std::string& uniformName, const glm::mat4& mat) override;
+			virtual void UploadInt(const std::string& uniformName, int value) override;
 
 		private:
 			unsigned int m_id;

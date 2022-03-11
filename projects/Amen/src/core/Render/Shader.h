@@ -18,6 +18,7 @@ namespace Amen
 			virtual void Bind() = 0;
 			virtual void UnBind() = 0;
 			virtual void UploadMat(const std::string& uniformName, const glm::mat4& mat) = 0;
+			virtual void UploadInt(const std::string& uniformName, int value) = 0;
 
 		protected:
 			bool m_isValid = false;

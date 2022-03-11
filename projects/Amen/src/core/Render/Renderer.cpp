@@ -27,13 +27,10 @@ void Amen::Renderer::EndScene()
 
 void Amen::Renderer::Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer, const glm::mat4& transform)
 {
-	//Upload View and Projection matrices.
-	if (s_ActiveCamera->GetReason() != Camera::RecalculateReasonE::NONE)
-	{
-		shader->UploadMat("u_View", s_ActiveCamera->GetView());
-		shader->UploadMat("u_Proj", s_ActiveCamera->GetProj());
-		s_ActiveCamera->m_reason = Camera::RecalculateReasonE::NONE;
-	}
+
+	shader->UploadMat("u_View", s_ActiveCamera->GetView());
+	shader->UploadMat("u_Proj", s_ActiveCamera->GetProj());
+
 
 	//Upload Model Matrix.
 	shader->UploadMat("u_Model", transform);

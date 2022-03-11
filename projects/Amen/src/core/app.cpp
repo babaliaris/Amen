@@ -11,6 +11,7 @@
 #include <core/Render/Buffer.h>
 #include <core/Render/Renderer.h>
 #include <core/Render/Cameras/OrthographicCamera.h>
+#include <core/Render/Texture.h>
 
 //-------------------------------Static Initializations-------------------------------//
 
@@ -66,7 +67,7 @@ void Amen::App::Run()
 	double currentTime = 0.0f;
 	double prevTime = 0.0f;
 
-	float vertexData[] =
+	float triangleData[] =
 	{
 		//Positions				//Colors			//Texture Coordinates
 		-0.5f, -0.5f, 0.0f,		1.0f, 0.0f, 0.0f,	0.0f, 0.0f,	//0
@@ -74,31 +75,73 @@ void Amen::App::Run()
 		 0.0f,  0.5f, 0.0f,		0.0f, 0.0f, 1.0f,	0.5f, 0.5f	//2
 	};
 
-	unsigned int indexData[] =
+	unsigned int triangleIndexData[] =
 	{
 		2, 1, 0
 	};
 
-	BufferLayout layout = {
+
+	float quadData[] =
+	{
+		//Positions				//Texture Coordinates
+		-0.5f,  0.5f, 0.0f,		0.0f, 1.0f,	//0 (Top Left)
+		 0.5f,  0.5f, 0.0f,		1.0f, 1.0f,	//1 (Top Right)
+		 0.5f, -0.5f, 0.0f,		1.0f, 0.0f,	//2 (Bottom Right)
+		-0.5f, -0.5f, 0.0f,		0.0f, 0.0f	//3 (Bottom Left)
+	};
+
+	unsigned int quadIndexData[] =
+	{
+		0, 2, 3,
+		0, 1, 2
+	};
+
+
+
+
+	BufferLayout triangleLayout = {
 		{"Positions", ShaderType::FLOAT3},
 		{"Colors", ShaderType::FLOAT3},
 		{"Texture Coordinates", ShaderType::FLOAT2}
 	};
 
-	Ref<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertexData, sizeof(vertexData));
-	vertexBuffer->SetLayout(layout);
+	Ref<VertexBuffer> triangleVertexBuffer = VertexBuffer::Create(triangleData, sizeof(triangleData));
+	triangleVertexBuffer->SetLayout(triangleLayout);
 
-	Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indexData, 3);
-	Ref<ArrayBuffer> arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
+	Ref<IndexBuffer> triangleIndexBuffer = IndexBuffer::Create(triangleIndexData, 3);
+	Ref<ArrayBuffer> triangleArrayBuffer = ArrayBuffer::Create(triangleVertexBuffer, triangleIndexBuffer);
 
-	Ref<Shader> shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mvp_triangle.glsl"));
+	Ref<Shader> triangleShader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mvp_triangle_textured.glsl"));
+
+
+
+	BufferLayout quadLayout = {
+		{"Positions", ShaderType::FLOAT3},
+		{"Texture Coordinates", ShaderType::FLOAT2}
+	};
+
+	Ref<VertexBuffer> quadVertexBuffer = VertexBuffer::Create(quadData, sizeof(quadData));
+	quadVertexBuffer->SetLayout(quadLayout);
+
+	Ref<IndexBuffer> quadIndexBuffer = IndexBuffer::Create(quadIndexData, 6);
+	Ref<ArrayBuffer> quadArrayBuffer = ArrayBuffer::Create(quadVertexBuffer, quadIndexBuffer);
+
+	Ref<Shader> quadShader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mvp_quad_textured.glsl"));
+	quadShader->UploadInt("u_Texture", 0);
+
+	Ref<Texture2D> checkerboardTexture = Texture2D::Create(AMEN_RELATIVE("resources/textures/Checkerboard.png"));
+	Ref<Texture2D> chernoLogoTexture = Texture2D::Create(AMEN_RELATIVE("resources/textures/ChernoLogo.png"));
+
+
 
 	Camera::OrthographicProps props = { 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f };
 	OrthographicCamera camera(props);
 	camera.SetMovementSpeed(3.0f);
 	camera.SetRotationSpeed(40.0f);
 
-	glm::mat4 transform(1.0f);
+	glm::mat4 triangleTransform(1.0f);
+	glm::mat4 quadTransform = glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.5f, 0.0f));
+	glm::mat4 chernoLogoTransform = glm::translate(glm::mat4(1.0f), glm::vec3(0.6f, 0.4f, 0.0f));
 
 	//Set the Clear Color to dark gray.
 	RendererCommand::SetClearColor(0.2, 0.2, 0.2, 1);
@@ -165,26 +208,34 @@ void Amen::App::Run()
 
 		if (Input::GetKeyDown(KeyboardE::k_j))
 		{
-			transform = glm::translate(transform, glm::vec3(-deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
+			triangleTransform = glm::translate(triangleTransform, glm::vec3(-deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_l))
 		{
-			transform = glm::translate(transform, glm::vec3(deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
+			triangleTransform = glm::translate(triangleTransform, glm::vec3(deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_i))
 		{
-			transform = glm::translate(transform, glm::vec3(0.0f, deltaTime.GetTimeSeconds() * 2, 0.0f));
+			triangleTransform = glm::translate(triangleTransform, glm::vec3(0.0f, deltaTime.GetTimeSeconds() * 2, 0.0f));
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_k))
 		{
-			transform = glm::translate(transform, glm::vec3(0.0f, -deltaTime.GetTimeSeconds() * 2, 0.0f));
+			triangleTransform = glm::translate(triangleTransform, glm::vec3(0.0f, -deltaTime.GetTimeSeconds() * 2, 0.0f));
 		}
 
 		Renderer::BeginScene(camera);
-		Renderer::Submit(shader, arrayBuffer, transform);
+
+		Renderer::Submit(triangleShader, triangleArrayBuffer, triangleTransform);
+
+		checkerboardTexture->Bind();
+		Renderer::Submit(quadShader, quadArrayBuffer, quadTransform);
+
+		chernoLogoTexture->Bind();
+		Renderer::Submit(quadShader, quadArrayBuffer, chernoLogoTransform);
+
 		Renderer::EndScene();
 
 		//Must be last.

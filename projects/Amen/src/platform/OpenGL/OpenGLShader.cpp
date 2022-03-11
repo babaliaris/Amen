@@ -86,7 +86,7 @@ Amen::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
 		GLCall(glGetProgramInfoLog(m_id, length, NULL, message));
 
 		//Log a warning.
-		AMEN_ERROR("Shader linkage failed: %s\n%s", filePath.c_str(), message);
+		AMEN_ASSERT(false, "Shader linkage failed: %s\n%s", filePath.c_str(), message);
 
 		//Delete the message.
 		delete[] message;
@@ -115,7 +115,7 @@ Amen::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
 		GLCall(glGetProgramInfoLog(m_id, length, NULL, message));
 
 		//Log a warning.
-		AMEN_ERROR("Shader validation failed: %s\n%s", filePath.c_str(), message);
+		AMEN_ASSERT(false, "Shader validation failed: %s\n%s", filePath.c_str(), message);
 
 		//Delete the message.
 		delete[] message;
@@ -128,8 +128,6 @@ Amen::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
 
 	//The program has been linked and validated successfully.
 	m_isValid = true;
-
-	AMEN_INFO("Shader created!!!");
 }
 
 
@@ -186,6 +184,29 @@ void Amen::OpenGLShader::UploadMat(const std::string& uniformName, const glm::ma
 
 
 
+
+void Amen::OpenGLShader::UploadInt(const std::string& uniformName, int value)
+{
+	this->Bind();
+
+	GLCall(GLint location = glGetUniformLocation(m_id, uniformName.c_str()));
+
+	if (location == -1)
+	{
+		AMEN_WARN("Uniform = \"%s\" location was not found.", uniformName.c_str());
+	}
+
+	else
+	{
+		GLCall(glUniform1i(location, value));
+	}
+
+	this->UnBind();
+}
+
+
+
+
 //Load a shader from a file.
 ShaderSources LoadShaderFromFile(const std::string& path)
 {
@@ -204,7 +225,7 @@ ShaderSources LoadShaderFromFile(const std::string& path)
 	//The file could not be opened.
 	if (!file.is_open())
 	{
-		AMEN_ERROR("File: %s, could not be opened.", path.c_str());
+		AMEN_ASSERT(false, "File: %s, could not be opened.", path.c_str());
 	}
 
 	//Read the file line by line.
@@ -225,7 +246,7 @@ ShaderSources LoadShaderFromFile(const std::string& path)
 			//Shader decoration is invalid.
 			else
 			{
-				AMEN_ERROR("Shader: %s, has an invalid #shader decoration.", path.c_str());
+				AMEN_ASSERT(false, "Shader: %s, has an invalid #shader decoration.", path.c_str());
 				return src;
 			}
 		}
@@ -236,7 +257,7 @@ ShaderSources LoadShaderFromFile(const std::string& path)
 			//The type must not be none at this stage.
 			if (type == ShaderType::NONE)
 			{
-				AMEN_ERROR("Shader: %s, has invalid #shader decorations.", path.c_str());
+				AMEN_ASSERT(false, "Shader: %s, has invalid #shader decorations.", path.c_str());
 				return src;
 			}
 
@@ -284,7 +305,7 @@ unsigned int CompileShader(GLenum shader_type, const std::string& src, const std
 		GLCall(glGetShaderInfoLog(shader_id, length, NULL, message));
 
 		//Log an error.
-		AMEN_ERROR("Shader compilation failed: %s\n%s", path.c_str(), message);
+		AMEN_ASSERT(false, "Shader compilation failed: %s\n%s", path.c_str(), message);
 
 		//Delete the shader.
 		GLCall(glDeleteShader(shader_id));
