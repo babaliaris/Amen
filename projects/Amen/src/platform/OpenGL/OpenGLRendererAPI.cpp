@@ -14,6 +14,15 @@ Amen::OpenGLRendererAPI::OpenGLRendererAPI(GLADloadproc proc)
 
 
 
+void Amen::OpenGLRendererAPI::Init()
+{
+	GLCall(glEnable(GL_BLEND));
+	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+}
+
+
+
+
 void Amen::OpenGLRendererAPI::SetClearColor(float r, float g, float b, float a)
 {
 	GLCall(glClearColor(r, g, b, a));

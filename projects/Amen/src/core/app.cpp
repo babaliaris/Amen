@@ -33,6 +33,9 @@ Amen::App::App() : m_window(nullptr)
 	//Create the window.
 	m_window = Window::Create();
 
+	//Initialize the Renderer.
+	RendererCommand::Init();
+
 	//Init Input.
 	Input::Init();
 

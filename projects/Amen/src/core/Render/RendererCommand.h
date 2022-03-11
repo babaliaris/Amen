@@ -6,6 +6,10 @@ namespace Amen
 	class RendererCommand
 	{
 		public:
+			inline static void Init()
+			{
+				RendererAPI::Get().Init();
+			}
 
 			inline static void SetClearColor(float r, float g, float b, float a)
 			{
