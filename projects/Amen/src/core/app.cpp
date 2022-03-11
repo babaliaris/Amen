@@ -91,12 +91,14 @@ void Amen::App::Run()
 	Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indexData, 3);
 	Ref<ArrayBuffer> arrayBuffer = ArrayBuffer::Create(vertexBuffer, indexBuffer);
 
-	Ref<Shader> shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mv_triangle.glsl"));
+	Ref<Shader> shader = Shader::Create(AMEN_RELATIVE("resources/OpenGLShaders/mvp_triangle.glsl"));
 
 	Camera::OrthographicProps props = { 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 1.0f };
 	OrthographicCamera camera(props);
 	camera.SetMovementSpeed(3.0f);
 	camera.SetRotationSpeed(40.0f);
+
+	glm::mat4 transform(1.0f);
 
 	//Set the Clear Color to dark gray.
 	RendererCommand::SetClearColor(0.2, 0.2, 0.2, 1);
@@ -133,42 +135,56 @@ void Amen::App::Run()
 
 		if (Input::GetKeyDown(KeyboardE::k_up))
 		{
-			AMEN_INFO("Camera::MovementE::FORWARD");
 			camera.Move(Camera::MovementE::FORWARD, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_down))
 		{
-			AMEN_INFO("Camera::MovementE::BACKWARD");
 			camera.Move(Camera::MovementE::BACKWARD, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_left))
 		{
-			AMEN_INFO("Camera::MovementE::LEFT");
 			camera.Move(Camera::MovementE::LEFT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::k_right))
 		{
-			AMEN_INFO("Camera::MovementE::RIGHT");
 			camera.Move(Camera::MovementE::RIGHT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::kp_4))
 		{
-			AMEN_INFO("Camera::MovementE::ROLL_LEFT");
 			camera.Move(Camera::MovementE::ROLL_LEFT, deltaTime);
 		}
 
 		if (Input::GetKeyDown(KeyboardE::kp_6))
 		{
-			AMEN_INFO("Camera::MovementE::ROLL_RIGHT");
 			camera.Move(Camera::MovementE::ROLL_RIGHT, deltaTime);
 		}
 
+		if (Input::GetKeyDown(KeyboardE::k_j))
+		{
+			transform = glm::translate(transform, glm::vec3(-deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_l))
+		{
+			transform = glm::translate(transform, glm::vec3(deltaTime.GetTimeSeconds() * 2, 0.0f, 0.0f));
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_i))
+		{
+			transform = glm::translate(transform, glm::vec3(0.0f, deltaTime.GetTimeSeconds() * 2, 0.0f));
+		}
+
+		if (Input::GetKeyDown(KeyboardE::k_k))
+		{
+			transform = glm::translate(transform, glm::vec3(0.0f, -deltaTime.GetTimeSeconds() * 2, 0.0f));
+		}
+
 		Renderer::BeginScene(camera);
-		Renderer::Submit(shader, arrayBuffer);
+		Renderer::Submit(shader, arrayBuffer, transform);
 		Renderer::EndScene();
 
 		//Must be last.

@@ -8,11 +8,12 @@ out vec4 vertexColor;
 
 uniform mat4 u_View;
 uniform mat4 u_Proj;
+uniform mat4 u_Model;
 
 void main()
 {
 	vertexColor = vec4(aColor, 1.0);
-	gl_Position = u_Proj * u_View * vec4(aPos, 1.0);
+	gl_Position = u_Proj * u_View * u_Model * vec4(aPos, 1.0);
 }
 
 #shader fragment

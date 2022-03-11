@@ -12,7 +12,7 @@ namespace Amen
 
 			static void BeginScene(Camera& camera);
 			static void EndScene();
-			static void Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer);
+			static void Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer, const glm::mat4& transform = glm::mat4(1.0f));
 
 		private:
 			static Camera* s_ActiveCamera;
