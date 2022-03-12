@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Amen
+namespace Hazel
 {
 	class Timestep
 	{

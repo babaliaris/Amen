@@ -6,14 +6,14 @@
 
 
 /**
-* Root namespace of Amen Engine.
+* Root namespace of Hazel Engine.
 *
 */
-namespace Amen
+namespace Hazel
 {
 
 	/**
-	* This enum describes the different kind of Events that Amen can handle.
+	* This enum describes the different kind of Events that Hazel can handle.
 	*
 	*/
 	enum class EventTypeE
@@ -58,7 +58,7 @@ namespace Amen
 
 
 	/**
-	* This macro implements the basic Amen::Event methods for each subclass.
+	* This macro implements the basic Hazel::Event methods for each subclass.
 	* 
 	*/
 	#define EVENT_IMPLEMENTATION(event_type, debug_sstream)\
@@ -87,7 +87,7 @@ namespace Amen
 			/**
 			* Get the type of this event.
 			* 
-			* @return the Amen::EventTypeE of the event.
+			* @return the Hazel::EventTypeE of the event.
 			* 
 			*/
 			virtual EventTypeE GetType() const = 0;
@@ -161,16 +161,16 @@ namespace Amen
 	};
 
 	/**
-	* Get the meaning of a Amen::KeyboardE key.
+	* Get the meaning of a Hazel::KeyboardE key.
 	* 
-	* @return The std::string representation of the Amen::KeyboardE key.
+	* @return The std::string representation of the Hazel::KeyboardE key.
 	*/
 	std::string GetKeyboardKeyMeaning(KeyboardE key);
 
 	/**
-	* Get the meaning of a Amen::MouseButtonE button.
+	* Get the meaning of a Hazel::MouseButtonE button.
 	*
-	* @return The std::string representation of the Amen::MouseButtonE button.
+	* @return The std::string representation of the Hazel::MouseButtonE button.
 	*/
 	std::string GetMouseButtonMeaning(MouseButtonE button);
 }

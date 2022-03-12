@@ -2,7 +2,7 @@
 #include <core/Render/RendererAPI.h>
 #include <glad/glad.h>
 
-namespace Amen
+namespace Hazel
 {
 	class OpenGLRendererAPI: public RendererAPI
 	{

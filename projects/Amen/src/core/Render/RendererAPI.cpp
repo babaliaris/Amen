@@ -5,13 +5,13 @@
 
 
 
-Amen::RendererAPI* Amen::RendererAPI::s_instance = nullptr;
+Hazel::RendererAPI* Hazel::RendererAPI::s_instance = nullptr;
 
 
 
 
 
-Amen::RendererAPI::RendererAPI()
+Hazel::RendererAPI::RendererAPI()
 {
 	AMEN_ASSERT(s_instance == nullptr, "Already another instance? This is a singleton!");
 	s_instance = this;

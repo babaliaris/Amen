@@ -2,13 +2,13 @@
 #include "Renderer.h"
 
 
-Amen::Camera* Amen::Renderer::s_ActiveCamera = nullptr;
+Hazel::Camera* Hazel::Renderer::s_ActiveCamera = nullptr;
 
 
 
 
 
-void Amen::Renderer::BeginScene(Camera& camera)
+void Hazel::Renderer::BeginScene(Camera& camera)
 {
 	s_ActiveCamera = &camera;
 }
@@ -17,7 +17,7 @@ void Amen::Renderer::BeginScene(Camera& camera)
 
 
 
-void Amen::Renderer::EndScene()
+void Hazel::Renderer::EndScene()
 {
 }
 
@@ -25,7 +25,7 @@ void Amen::Renderer::EndScene()
 
 
 
-void Amen::Renderer::Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer, const glm::mat4& transform)
+void Hazel::Renderer::Submit(Ref<Shader> shader, Ref<ArrayBuffer> buffer, const glm::mat4& transform)
 {
 
 	shader->UploadMat("u_View", s_ActiveCamera->GetView());

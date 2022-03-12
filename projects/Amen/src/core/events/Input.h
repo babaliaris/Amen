@@ -1,7 +1,7 @@
 #pragma once
 #include "event.h"
 
-namespace Amen
+namespace Hazel
 {
 	class AMEN_API Input
 	{

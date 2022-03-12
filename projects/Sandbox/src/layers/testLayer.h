@@ -1,14 +1,14 @@
 #pragma once
-#include <Amen.h>
+#include <Hazel.h>
 
-class TestLayer: public Amen::Layer
+class TestLayer: public Hazel::Layer
 {
 	public:
 
-		virtual void OnUpdate(Amen::Timestep deltaTime) override;
+		virtual void OnUpdate(Hazel::Timestep deltaTime) override;
 
 
-		virtual void OnEvent(Amen::Event& e) override;
+		virtual void OnEvent(Hazel::Event& e) override;
 
 
 		virtual void OnAttach()override;

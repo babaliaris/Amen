@@ -1,7 +1,7 @@
 #pragma once
 #include <core/core.h>
 
-namespace Amen
+namespace Hazel
 {
 	class AMEN_API RendererAPI
 	{

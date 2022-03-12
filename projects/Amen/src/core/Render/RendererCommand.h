@@ -1,7 +1,7 @@
 #pragma once
 #include <core/Render/RendererAPI.h>
 
-namespace Amen
+namespace Hazel
 {
 	class RendererCommand
 	{

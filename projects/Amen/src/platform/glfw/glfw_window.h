@@ -7,7 +7,7 @@ struct GLFWwindow;
 
 
 
-namespace Amen
+namespace Hazel
 {
 	struct WindowData
 	{

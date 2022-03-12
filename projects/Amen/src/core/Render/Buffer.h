@@ -3,7 +3,7 @@
 #include <vector>
 #include <core/core.h>
 
-namespace Amen
+namespace Hazel
 {
 	enum class ShaderType
 	{
@@ -18,21 +18,21 @@ namespace Amen
 	{
 		switch (type)
 		{
-			case Amen::ShaderType::NONE:	return 0;
-			case Amen::ShaderType::BOOL1:	return 1;
-			case Amen::ShaderType::BOOL2:	return 2;
-			case Amen::ShaderType::BOOL3:	return 3;
-			case Amen::ShaderType::BOOL4:	return 4;
-			case Amen::ShaderType::INT1:	return 1;
-			case Amen::ShaderType::INT2:	return 2;
-			case Amen::ShaderType::INT3:	return 3;
-			case Amen::ShaderType::INT4:	return 4;
-			case Amen::ShaderType::FLOAT1:	return 1;
-			case Amen::ShaderType::FLOAT2:	return 2;
-			case Amen::ShaderType::FLOAT3:	return 3;
-			case Amen::ShaderType::FLOAT4:	return 4;
-			case Amen::ShaderType::MAT3:	return 3 * 3;
-			case Amen::ShaderType::MAT4:	return 4 * 4;
+			case Hazel::ShaderType::NONE:	return 0;
+			case Hazel::ShaderType::BOOL1:	return 1;
+			case Hazel::ShaderType::BOOL2:	return 2;
+			case Hazel::ShaderType::BOOL3:	return 3;
+			case Hazel::ShaderType::BOOL4:	return 4;
+			case Hazel::ShaderType::INT1:	return 1;
+			case Hazel::ShaderType::INT2:	return 2;
+			case Hazel::ShaderType::INT3:	return 3;
+			case Hazel::ShaderType::INT4:	return 4;
+			case Hazel::ShaderType::FLOAT1:	return 1;
+			case Hazel::ShaderType::FLOAT2:	return 2;
+			case Hazel::ShaderType::FLOAT3:	return 3;
+			case Hazel::ShaderType::FLOAT4:	return 4;
+			case Hazel::ShaderType::MAT3:	return 3 * 3;
+			case Hazel::ShaderType::MAT4:	return 4 * 4;
 			default: return 0;
 		}
 	}
@@ -41,21 +41,21 @@ namespace Amen
 	{
 		switch (type)
 		{
-			case Amen::ShaderType::NONE:	return 0;
-			case Amen::ShaderType::BOOL1:	return 1 * 1;
-			case Amen::ShaderType::BOOL2:	return 1 * 2;
-			case Amen::ShaderType::BOOL3:	return 1 * 3;
-			case Amen::ShaderType::BOOL4:	return 1 * 4;
-			case Amen::ShaderType::INT1:	return 4 * 1;
-			case Amen::ShaderType::INT2:	return 4 * 2;
-			case Amen::ShaderType::INT3:	return 4 * 3;
-			case Amen::ShaderType::INT4:	return 4 * 4;
-			case Amen::ShaderType::FLOAT1:	return 4 * 1;
-			case Amen::ShaderType::FLOAT2:	return 4 * 2;
-			case Amen::ShaderType::FLOAT3:	return 4 * 3;
-			case Amen::ShaderType::FLOAT4:	return 4 * 4;
-			case Amen::ShaderType::MAT3:	return 3 * 3 * 4;
-			case Amen::ShaderType::MAT4:	return 4 * 4 * 4;
+			case Hazel::ShaderType::NONE:	return 0;
+			case Hazel::ShaderType::BOOL1:	return 1 * 1;
+			case Hazel::ShaderType::BOOL2:	return 1 * 2;
+			case Hazel::ShaderType::BOOL3:	return 1 * 3;
+			case Hazel::ShaderType::BOOL4:	return 1 * 4;
+			case Hazel::ShaderType::INT1:	return 4 * 1;
+			case Hazel::ShaderType::INT2:	return 4 * 2;
+			case Hazel::ShaderType::INT3:	return 4 * 3;
+			case Hazel::ShaderType::INT4:	return 4 * 4;
+			case Hazel::ShaderType::FLOAT1:	return 4 * 1;
+			case Hazel::ShaderType::FLOAT2:	return 4 * 2;
+			case Hazel::ShaderType::FLOAT3:	return 4 * 3;
+			case Hazel::ShaderType::FLOAT4:	return 4 * 4;
+			case Hazel::ShaderType::MAT3:	return 3 * 3 * 4;
+			case Hazel::ShaderType::MAT4:	return 4 * 4 * 4;
 			default: return 0;
 		}
 	}

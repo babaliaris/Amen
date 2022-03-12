@@ -1,7 +1,7 @@
 #pragma once
 #include <core/events/event.h>
 
-namespace Amen
+namespace Hazel
 {
 	/**
 	* Mouse Button Event Class.

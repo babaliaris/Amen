@@ -3,7 +3,7 @@
 
 struct GLFWwindow;
 
-namespace Amen
+namespace Hazel
 {
 	class GLFWOpenGLContext: public GraphicsContext
 	{

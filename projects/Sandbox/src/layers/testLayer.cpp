@@ -1,10 +1,10 @@
 #include "testLayer.h"
 
-void TestLayer::OnUpdate(Amen::Timestep deltaTime)
+void TestLayer::OnUpdate(Hazel::Timestep deltaTime)
 {
 }
 
-void TestLayer::OnEvent(Amen::Event& e)
+void TestLayer::OnEvent(Hazel::Event& e)
 {
 }
 

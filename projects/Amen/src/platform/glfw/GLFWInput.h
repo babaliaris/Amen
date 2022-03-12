@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-namespace Amen
+namespace Hazel
 {
 	class GLFWInput: public Input
 	{

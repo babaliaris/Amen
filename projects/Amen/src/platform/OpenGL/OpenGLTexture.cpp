@@ -6,7 +6,7 @@
 #include <stb_image.h>
 
 
-Amen::OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
+Hazel::OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
 	: Texture2D(path), m_id(0), m_channels(0)
 {
 	//Flip the image on load.
@@ -73,7 +73,7 @@ Amen::OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
 
 
 
-Amen::OpenGLTexture2D::~OpenGLTexture2D()
+Hazel::OpenGLTexture2D::~OpenGLTexture2D()
 {
 	AMEN_INFO("Calling ~OpenGLTexture2D()...");
 	GLCall(glDeleteTextures(1, &m_id));
@@ -82,7 +82,7 @@ Amen::OpenGLTexture2D::~OpenGLTexture2D()
 
 
 
-void Amen::OpenGLTexture2D::Bind(unsigned int slot)
+void Hazel::OpenGLTexture2D::Bind(unsigned int slot)
 {
 	GLCall(glActiveTexture(GL_TEXTURE0 + slot));
 	GLCall(glBindTexture(GL_TEXTURE_2D, m_id));
@@ -91,7 +91,7 @@ void Amen::OpenGLTexture2D::Bind(unsigned int slot)
 
 
 
-void Amen::OpenGLTexture2D::UnBind()
+void Hazel::OpenGLTexture2D::UnBind()
 {
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }

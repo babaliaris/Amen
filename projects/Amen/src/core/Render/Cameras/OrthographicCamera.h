@@ -2,7 +2,7 @@
 #include <core/Render/Cameras/Camera.h>
 #include <core/core.h>
 
-namespace Amen
+namespace Hazel
 {
 	class AMEN_API OrthographicCamera: public Camera
 	{

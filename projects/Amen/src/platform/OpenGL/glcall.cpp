@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <core/logger.h>
 
-namespace Amen
+namespace Hazel
 {
 	//Get Open GL Error Meaning.
 	std::string GetOpenGLErrorMeaning(GLenum gl_error)

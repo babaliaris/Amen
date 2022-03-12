@@ -4,7 +4,7 @@
 #include <core/core.h>
 #include <core/Timestep.h>
 
-namespace Amen
+namespace Hazel
 {
 	class AMEN_API Camera
 	{

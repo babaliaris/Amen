@@ -9,7 +9,7 @@
 */
 int main(int argc, char **argv)
 {
-	Amen::App* app = Amen::CreateApp();
+	Hazel::App* app = Hazel::CreateApp();
 
 	app->Run();
 

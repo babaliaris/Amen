@@ -3,9 +3,9 @@
 #include <core/logger.h>
 
 
-Amen::GraphicsContext* Amen::GraphicsContext::s_instance = nullptr;
+Hazel::GraphicsContext* Hazel::GraphicsContext::s_instance = nullptr;
 
-Amen::GraphicsContext::GraphicsContext()
+Hazel::GraphicsContext::GraphicsContext()
 {
 	AMEN_ASSERT(s_instance == nullptr, "Already another instance? This is a singleton!");
 	s_instance = this;

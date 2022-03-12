@@ -2,7 +2,7 @@
 #include "OrthographicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Amen::OrthographicCamera::OrthographicCamera(const OrthographicProps& props)
+Hazel::OrthographicCamera::OrthographicCamera(const OrthographicProps& props)
 	: Camera(props), m_RotationZ(0.0f)
 {
 	this->RecalculateMatrices(RecalculateReasonE::ALL);
@@ -12,7 +12,7 @@ Amen::OrthographicCamera::OrthographicCamera(const OrthographicProps& props)
 
 
 
-Amen::OrthographicCamera::~OrthographicCamera()
+Hazel::OrthographicCamera::~OrthographicCamera()
 {
 }
 
@@ -20,7 +20,7 @@ Amen::OrthographicCamera::~OrthographicCamera()
 
 
 
-void Amen::OrthographicCamera::RecalculateMatrices(RecalculateReasonE reason)
+void Hazel::OrthographicCamera::RecalculateMatrices(RecalculateReasonE reason)
 {
 	//Recalculate Projection Matrix.
 	if (reason == RecalculateReasonE::PROPS_CHANGED || reason == RecalculateReasonE::ALL)
@@ -52,35 +52,35 @@ void Amen::OrthographicCamera::RecalculateMatrices(RecalculateReasonE reason)
 
 
 
-void Amen::OrthographicCamera::MoveImpl(MovementE movement, const Timestep& deltaTime)
+void Hazel::OrthographicCamera::MoveImpl(MovementE movement, const Timestep& deltaTime)
 {
 	switch (movement)
 	{
-		case Amen::Camera::MovementE::FORWARD:
+		case Hazel::Camera::MovementE::FORWARD:
 			m_pos.y += m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::BACKWARD:
+		case Hazel::Camera::MovementE::BACKWARD:
 			m_pos.y -= m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::LEFT:
+		case Hazel::Camera::MovementE::LEFT:
 			m_pos.x -= m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::RIGHT:
+		case Hazel::Camera::MovementE::RIGHT:
 			m_pos.x += m_movementSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::ROLL_LEFT:
+		case Hazel::Camera::MovementE::ROLL_LEFT:
 			m_RotationZ += m_rotationSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::ROLL_RIGHT:
+		case Hazel::Camera::MovementE::ROLL_RIGHT:
 			m_RotationZ -= m_rotationSpeed * deltaTime.GetTimeSeconds();
 			break;
-		case Amen::Camera::MovementE::ROTATE_LEFT:
+		case Hazel::Camera::MovementE::ROTATE_LEFT:
 			break;
-		case Amen::Camera::MovementE::ROTATE_RIGHT:
+		case Hazel::Camera::MovementE::ROTATE_RIGHT:
 			break;
-		case Amen::Camera::MovementE::LOOK_UP:
+		case Hazel::Camera::MovementE::LOOK_UP:
 			break;
-		case Amen::Camera::MovementE::LOOK_DOWN:
+		case Hazel::Camera::MovementE::LOOK_DOWN:
 			break;
 		default:
 			break;

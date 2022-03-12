@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "GLFWInput.h"
-#include "GlfwToAmen.h"
+#include "GlfwToHazel.h"
 #include <core/logger.h>
 #include <core/core.h>
 
-Amen::GLFWInput::GLFWInput(): m_window( static_cast<GLFWwindow *>(App::Get().GetWindow().GetNativeWindow()) )
+Hazel::GLFWInput::GLFWInput(): m_window( static_cast<GLFWwindow *>(App::Get().GetWindow().GetNativeWindow()) )
 {
 }
 
@@ -12,9 +12,9 @@ Amen::GLFWInput::GLFWInput(): m_window( static_cast<GLFWwindow *>(App::Get().Get
 
 
 
-bool Amen::GLFWInput::GetKeyDownImp(KeyboardE key)
+bool Hazel::GLFWInput::GetKeyDownImp(KeyboardE key)
 {
-	int state = glfwGetKey(m_window, GlfwToAmen::KeyToGLFW(key) );
+	int state = glfwGetKey(m_window, GlfwToHazel::KeyToGLFW(key) );
 
 	return (state == GLFW_PRESS ? true : false) || (state == GLFW_REPEAT ? true : false);
 }
@@ -23,9 +23,9 @@ bool Amen::GLFWInput::GetKeyDownImp(KeyboardE key)
 
 
 
-bool Amen::GLFWInput::GetKeyUpImp(KeyboardE key)
+bool Hazel::GLFWInput::GetKeyUpImp(KeyboardE key)
 {
-	int state = glfwGetKey(m_window, GlfwToAmen::KeyToGLFW(key));
+	int state = glfwGetKey(m_window, GlfwToHazel::KeyToGLFW(key));
 
 	return (state == GLFW_RELEASE ? true : false);
 }
@@ -34,7 +34,7 @@ bool Amen::GLFWInput::GetKeyUpImp(KeyboardE key)
 
 
 
-bool Amen::GLFWInput::GetKeyImp(KeyboardE key)
+bool Hazel::GLFWInput::GetKeyImp(KeyboardE key)
 {
 	AMEN_ASSERT(false, "Hasn't been implemented yet.");
 	return false;
@@ -44,9 +44,9 @@ bool Amen::GLFWInput::GetKeyImp(KeyboardE key)
 
 
 
-bool Amen::GLFWInput::GetButtonDownImp(MouseButtonE button)
+bool Hazel::GLFWInput::GetButtonDownImp(MouseButtonE button)
 {
-	int status = glfwGetMouseButton(m_window, GlfwToAmen::MouseButtonToGLFW(button));
+	int status = glfwGetMouseButton(m_window, GlfwToHazel::MouseButtonToGLFW(button));
 
 	return status == GLFW_PRESS ? true : false;
 }
@@ -55,9 +55,9 @@ bool Amen::GLFWInput::GetButtonDownImp(MouseButtonE button)
 
 
 
-bool Amen::GLFWInput::GetButtonUpImp(MouseButtonE button)
+bool Hazel::GLFWInput::GetButtonUpImp(MouseButtonE button)
 {
-	int status = glfwGetMouseButton(m_window, GlfwToAmen::MouseButtonToGLFW(button));
+	int status = glfwGetMouseButton(m_window, GlfwToHazel::MouseButtonToGLFW(button));
 
 	return status == GLFW_RELEASE ? true : false;
 }
@@ -66,7 +66,7 @@ bool Amen::GLFWInput::GetButtonUpImp(MouseButtonE button)
 
 
 
-bool Amen::GLFWInput::GetButtonImp(MouseButtonE button)
+bool Hazel::GLFWInput::GetButtonImp(MouseButtonE button)
 {
 	AMEN_ASSERT(false, "Hasn't been implemented yet.");
 	return false;
@@ -76,7 +76,7 @@ bool Amen::GLFWInput::GetButtonImp(MouseButtonE button)
 
 
 
-std::pair<double, double> Amen::GLFWInput::GetMousePosImp()
+std::pair<double, double> Hazel::GLFWInput::GetMousePosImp()
 {
 	double x, y;
 	glfwGetCursorPos(m_window, &x, &y);
@@ -87,7 +87,7 @@ std::pair<double, double> Amen::GLFWInput::GetMousePosImp()
 
 
 
-double Amen::GLFWInput::GetMouseXImp()
+double Hazel::GLFWInput::GetMouseXImp()
 {
 	double x, y;
 	glfwGetCursorPos(m_window, &x, &y);
@@ -99,7 +99,7 @@ double Amen::GLFWInput::GetMouseXImp()
 
 
 
-double Amen::GLFWInput::GetMouseYImp()
+double Hazel::GLFWInput::GetMouseYImp()
 {
 	double x, y;
 	glfwGetCursorPos(m_window, &x, &y);

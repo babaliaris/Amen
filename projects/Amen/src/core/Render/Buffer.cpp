@@ -5,7 +5,7 @@
 
 
 
-Amen::Ref<Amen::VertexBuffer> Amen::VertexBuffer::Create(const float *data, unsigned int size)
+Hazel::Ref<Hazel::VertexBuffer> Hazel::VertexBuffer::Create(const float *data, unsigned int size)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
 		return Ref<VertexBuffer>(new OpenGLVertexBuffer(data, size));
@@ -17,7 +17,7 @@ Amen::Ref<Amen::VertexBuffer> Amen::VertexBuffer::Create(const float *data, unsi
 
 
 
-void Amen::VertexBuffer::SetLayout(const BufferLayout& layout)
+void Hazel::VertexBuffer::SetLayout(const BufferLayout& layout)
 {
 	//Set the layout.
 	m_layout = layout;
@@ -32,7 +32,7 @@ void Amen::VertexBuffer::SetLayout(const BufferLayout& layout)
 
 
 
-Amen::Ref<Amen::IndexBuffer> Amen::IndexBuffer::Create(unsigned int*data, unsigned int count)
+Hazel::Ref<Hazel::IndexBuffer> Hazel::IndexBuffer::Create(unsigned int*data, unsigned int count)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
 		return Ref<IndexBuffer>(new OpenGLIndexBuffer(data, count));
@@ -44,7 +44,7 @@ Amen::Ref<Amen::IndexBuffer> Amen::IndexBuffer::Create(unsigned int*data, unsign
 
 
 
-Amen::IndexBuffer::IndexBuffer(unsigned int count)
+Hazel::IndexBuffer::IndexBuffer(unsigned int count)
 	: m_count(count)
 {
 }
@@ -52,7 +52,7 @@ Amen::IndexBuffer::IndexBuffer(unsigned int count)
 
 
 
-Amen::ArrayBuffer::ArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
+Hazel::ArrayBuffer::ArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 	: m_vertexBuffer(vertexBuffer), m_indexBuffer(indexBuffer)
 {
 }
@@ -60,7 +60,7 @@ Amen::ArrayBuffer::ArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> 
 
 
 
-Amen::Ref<Amen::ArrayBuffer> Amen::ArrayBuffer::Create(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
+Hazel::Ref<Hazel::ArrayBuffer> Hazel::ArrayBuffer::Create(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 {
 	#if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
 		return Ref<ArrayBuffer>(new OpenGLArrayBuffer(vertexBuffer, indexBuffer));

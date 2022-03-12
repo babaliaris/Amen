@@ -9,7 +9,7 @@
 
 
 
-Amen::ImGuiGLFWLayer::ImGuiGLFWLayer()
+Hazel::ImGuiGLFWLayer::ImGuiGLFWLayer()
 {
 }
 
@@ -17,7 +17,7 @@ Amen::ImGuiGLFWLayer::ImGuiGLFWLayer()
 
 
 
-Amen::ImGuiGLFWLayer::~ImGuiGLFWLayer()
+Hazel::ImGuiGLFWLayer::~ImGuiGLFWLayer()
 {
 	AMEN_INFO("Calling ~ImGuiGLFWLayer()");
 	ImGui_ImplOpenGL3_Shutdown();
@@ -29,7 +29,7 @@ Amen::ImGuiGLFWLayer::~ImGuiGLFWLayer()
 
 
 
-void Amen::ImGuiGLFWLayer::OnAttach()
+void Hazel::ImGuiGLFWLayer::OnAttach()
 {
 	//Check and create ImGui context.
 	IMGUI_CHECKVERSION();
@@ -61,7 +61,7 @@ void Amen::ImGuiGLFWLayer::OnAttach()
 
 
 
-void Amen::ImGuiGLFWLayer::Begin()
+void Hazel::ImGuiGLFWLayer::Begin()
 {
 	//Start the frames.
 	ImGui_ImplOpenGL3_NewFrame();
@@ -73,7 +73,7 @@ void Amen::ImGuiGLFWLayer::Begin()
 
 
 
-void Amen::ImGuiGLFWLayer::End()
+void Hazel::ImGuiGLFWLayer::End()
 {
 	//Render.
 	ImGui::Render();
@@ -96,7 +96,7 @@ void Amen::ImGuiGLFWLayer::End()
 
 
 
-void Amen::ImGuiGLFWLayer::OnImGuiRender()
+void Hazel::ImGuiGLFWLayer::OnImGuiRender()
 {
 	if (m_showDemoWindow)
 		ImGui::ShowDemoWindow(&m_showDemoWindow);
@@ -106,6 +106,6 @@ void Amen::ImGuiGLFWLayer::OnImGuiRender()
 
 
 
-void Amen::ImGuiGLFWLayer::OnEvent(Event& e)
+void Hazel::ImGuiGLFWLayer::OnEvent(Event& e)
 {
 }

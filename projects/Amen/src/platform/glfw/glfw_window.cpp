@@ -4,14 +4,14 @@
 
 #include <core/core.h>
 #include <core/logger.h>
-#include "GlfwToAmen.h"
+#include "GlfwToHazel.h"
 
 #include <core/events/keyboard_events.h>
 #include <core/events/mouse_events.h>
 #include <core/events/application_events.h>
 
 
-Amen::GLFW_Window::GLFW_Window(const WindowProps& props) : m_window(nullptr)
+Hazel::GLFW_Window::GLFW_Window(const WindowProps& props) : m_window(nullptr)
 {
 	//Try to Initilize GLFW.
 	AMEN_ASSERT( glfwInit(), "Window failure: GLFW Failed to be initialized." );
@@ -49,7 +49,7 @@ Amen::GLFW_Window::GLFW_Window(const WindowProps& props) : m_window(nullptr)
 
 
 
-Amen::GLFW_Window::~GLFW_Window()
+Hazel::GLFW_Window::~GLFW_Window()
 {
 	AMEN_INFO("Calling ~GLFW_Window()");
 	glfwDestroyWindow(m_window);
@@ -60,7 +60,7 @@ Amen::GLFW_Window::~GLFW_Window()
 
 
 
-void Amen::GLFW_Window::Update()
+void Hazel::GLFW_Window::Update()
 {
 	glfwPollEvents();
 	m_context->SwapBuffers();
@@ -70,7 +70,7 @@ void Amen::GLFW_Window::Update()
 
 
 
-void Amen::GLFW_Window::SetTitle(const std::string& title)
+void Hazel::GLFW_Window::SetTitle(const std::string& title)
 {
 	glfwSetWindowTitle(m_window, title.c_str());
 	m_data.m_title = title;
@@ -82,7 +82,7 @@ void Amen::GLFW_Window::SetTitle(const std::string& title)
 
 
 
-void Amen::GLFW_Window::SetWidth(int width)
+void Hazel::GLFW_Window::SetWidth(int width)
 {
 	glfwSetWindowSize(m_window, width, m_data.m_height);
 	m_data.m_width = width;
@@ -92,7 +92,7 @@ void Amen::GLFW_Window::SetWidth(int width)
 
 
 
-void Amen::GLFW_Window::SetHeight(int height)
+void Hazel::GLFW_Window::SetHeight(int height)
 {
 	glfwSetWindowSize(m_window, m_data.m_width, height);
 	m_data.m_height = height;
@@ -101,7 +101,7 @@ void Amen::GLFW_Window::SetHeight(int height)
 
 
 
-void Amen::GLFW_Window::SetSize(int width, int height)
+void Hazel::GLFW_Window::SetSize(int width, int height)
 {
 	glfwSetWindowSize(m_window, width, height);
 	m_data.m_width = width;
@@ -112,7 +112,7 @@ void Amen::GLFW_Window::SetSize(int width, int height)
 
 
 
-void Amen::GLFW_Window::SetVSync(bool enabled)
+void Hazel::GLFW_Window::SetVSync(bool enabled)
 {
 	//VSync.
 	glfwSwapInterval( enabled ? 1 : 0 );
@@ -123,7 +123,7 @@ void Amen::GLFW_Window::SetVSync(bool enabled)
 
 
 
-double Amen::GLFW_Window::GetTime() const
+double Hazel::GLFW_Window::GetTime() const
 {
 	return glfwGetTime();
 }
@@ -131,7 +131,7 @@ double Amen::GLFW_Window::GetTime() const
 
 
 
-void Amen::GLFW_Window::InitilizeCallbacks() const
+void Hazel::GLFW_Window::InitilizeCallbacks() const
 {
 	glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
@@ -142,21 +142,21 @@ void Amen::GLFW_Window::InitilizeCallbacks() const
 
 			case GLFW_PRESS:
 			{
-				KeyboardKeyPressEvent e( GlfwToAmen::KeyToAmen(key) );
+				KeyboardKeyPressEvent e( GlfwToHazel::KeyToHazel(key) );
 				data.m_eventCallback(e);
 				break;
 			}
 
 			case GLFW_RELEASE:
 			{
-				KeyboardKeyReleasedEvent e(GlfwToAmen::KeyToAmen(key) );
+				KeyboardKeyReleasedEvent e(GlfwToHazel::KeyToHazel(key) );
 				data.m_eventCallback(e);
 				break;
 			}
 
 			case GLFW_REPEAT:
 			{
-				KeyboardKeyRepeatEvent e(GlfwToAmen::KeyToAmen(key), 1 );
+				KeyboardKeyRepeatEvent e(GlfwToHazel::KeyToHazel(key), 1 );
 				data.m_eventCallback(e);
 				break;
 			}
@@ -180,14 +180,14 @@ void Amen::GLFW_Window::InitilizeCallbacks() const
 		{
 			case GLFW_PRESS:
 			{
-				MouseButonPressedEvent e( GlfwToAmen::MouseButtonToAmen(button) );
+				MouseButonPressedEvent e( GlfwToHazel::MouseButtonToHazel(button) );
 				data.m_eventCallback(e);
 				break;
 			}
 
 			case GLFW_RELEASE:
 			{
-				MouseButonReleasedEvent e(GlfwToAmen::MouseButtonToAmen(button));
+				MouseButonReleasedEvent e(GlfwToHazel::MouseButtonToHazel(button));
 				data.m_eventCallback(e);
 				break;
 			}

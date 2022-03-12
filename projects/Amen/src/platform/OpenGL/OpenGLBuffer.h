@@ -1,7 +1,7 @@
 #pragma once
 #include <core/Render/Buffer.h>
 
-namespace Amen
+namespace Hazel
 {
 	class OpenGLVertexBuffer: public VertexBuffer
 	{

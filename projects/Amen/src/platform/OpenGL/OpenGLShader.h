@@ -1,7 +1,7 @@
 #pragma once
 #include <core/Render/Shader.h>
 
-namespace Amen
+namespace Hazel
 {
 	class OpenGLShader:public Shader
 	{

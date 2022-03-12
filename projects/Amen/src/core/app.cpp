@@ -16,12 +16,12 @@
 //-------------------------------Static Initializations-------------------------------//
 
 //s_instance (singleton).
-Amen::App* Amen::App::s_instance = nullptr;
+Hazel::App* Hazel::App::s_instance = nullptr;
 
 //-------------------------------Static Initializations-------------------------------//
 
 
-Amen::App::App() : m_window(nullptr)
+Hazel::App::App() : m_window(nullptr)
 {
 	//Get the instance of the app.
 	AMEN_ASSERT(s_instance == nullptr, "You can only have one app at a time (singleton).");
@@ -40,7 +40,7 @@ Amen::App::App() : m_window(nullptr)
 	Input::Init();
 
 	//Set the event callback.
-	m_window->SetEventCallback(AMEN_BIND(Amen::App::OnEvent));
+	m_window->SetEventCallback(AMEN_BIND(Hazel::App::OnEvent));
 
 	//Create the ImGuiLayer.
 	m_ImGuiLayer = ImguiLayer::Create();
@@ -55,7 +55,7 @@ Amen::App::App() : m_window(nullptr)
 
 
 
-Amen::App::~App()
+Hazel::App::~App()
 {
 	//Delete all the layers.
 	for (Layer* layer : m_layers)
@@ -64,7 +64,7 @@ Amen::App::~App()
 
 
 
-void Amen::App::Run()
+void Hazel::App::Run()
 {
 
 	double currentTime = 0.0f;
@@ -251,7 +251,7 @@ void Amen::App::Run()
 
 
 
-void Amen::App::PushLayer(Layer* layer)
+void Hazel::App::PushLayer(Layer* layer)
 {
 	m_layers.push_back(layer);
 
@@ -262,7 +262,7 @@ void Amen::App::PushLayer(Layer* layer)
 
 
 
-void Amen::App::RemoveLayer(Layer* layer)
+void Hazel::App::RemoveLayer(Layer* layer)
 {
 	m_layers.erase( std::remove(m_layers.begin(), m_layers.end(), layer), m_layers.end() );
 
@@ -272,7 +272,7 @@ void Amen::App::RemoveLayer(Layer* layer)
 
 
 
-void Amen::App::OnEvent(Event& e)
+void Hazel::App::OnEvent(Event& e)
 {
 	
 	EventDispatcher disp(e);
@@ -289,7 +289,7 @@ void Amen::App::OnEvent(Event& e)
 	disp.Dispatch<WindowMinimizedEvent>([this](WindowMinimizedEvent event)
 	{
 		m_paused = true;
-		AMEN_INFO("Amen Paused...");
+		AMEN_INFO("Hazel Paused...");
 		return false;
 	});
 
@@ -298,7 +298,7 @@ void Amen::App::OnEvent(Event& e)
 	disp.Dispatch<WindowRestoredEvent>([this](WindowRestoredEvent event)
 	{
 		m_paused = false;
-		AMEN_INFO("Amen Resumed...");
+		AMEN_INFO("Hazel Resumed...");
 		return false;
 	});
 

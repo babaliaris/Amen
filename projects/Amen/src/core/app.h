@@ -9,7 +9,7 @@
 * Root namespace of Amen Engine.
 * 
 */
-namespace Amen
+namespace Hazel
 {
 	/**
 	* The "Main" class for the clients.You have to inherit this class in order

@@ -3,10 +3,10 @@
 #include <core/app.h>
 
 /**
-* Root namespace of Amen Engine.
+* Root namespace of Hazel Engine.
 *
 */
-namespace Amen
+namespace Hazel
 {
 
 	/**

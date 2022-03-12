@@ -4,7 +4,7 @@
 #include <core/Render/Shader.h>
 #include <core/Render/Cameras/Camera.h>
 
-namespace Amen
+namespace Hazel
 {
 	class AMEN_API Renderer
 	{

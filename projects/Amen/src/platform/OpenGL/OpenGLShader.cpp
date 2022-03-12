@@ -25,7 +25,7 @@ unsigned int CompileShader(GLenum shader_type, const std::string& src, const std
 
 
 
-Amen::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
+Hazel::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
 {
 	//Load the sources from a file.
 	ShaderSources sources = LoadShaderFromFile(filePath);
@@ -134,7 +134,7 @@ Amen::OpenGLShader::OpenGLShader(const std::string& filePath) : m_id(0)
 
 
 
-Amen::OpenGLShader::~OpenGLShader()
+Hazel::OpenGLShader::~OpenGLShader()
 {
 	AMEN_INFO("Calling ~OpenGLShader()");
 	GLCall(glDeleteProgram(m_id));
@@ -144,7 +144,7 @@ Amen::OpenGLShader::~OpenGLShader()
 
 
 
-void Amen::OpenGLShader::Bind()
+void Hazel::OpenGLShader::Bind()
 {
 	GLCall(glUseProgram(m_id));
 }
@@ -153,7 +153,7 @@ void Amen::OpenGLShader::Bind()
 
 
 
-void Amen::OpenGLShader::UnBind()
+void Hazel::OpenGLShader::UnBind()
 {
 	GLCall(glUseProgram(0));
 }
@@ -162,7 +162,7 @@ void Amen::OpenGLShader::UnBind()
 
 
 
-void Amen::OpenGLShader::UploadMat(const std::string& uniformName, const glm::mat4& mat)
+void Hazel::OpenGLShader::UploadMat(const std::string& uniformName, const glm::mat4& mat)
 {
 	this->Bind();
 
@@ -185,7 +185,7 @@ void Amen::OpenGLShader::UploadMat(const std::string& uniformName, const glm::ma
 
 
 
-void Amen::OpenGLShader::UploadInt(const std::string& uniformName, int value)
+void Hazel::OpenGLShader::UploadInt(const std::string& uniformName, int value)
 {
 	this->Bind();
 

@@ -7,7 +7,7 @@
 * Root namespace of Amen Engine.
 *
 */
-namespace Amen
+namespace Hazel
 {
 
 	/**

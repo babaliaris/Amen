@@ -1,7 +1,7 @@
 #pragma once
 #include <core/imgui/imguiLayer.h>
 
-namespace Amen
+namespace Hazel
 {
 	class ImGuiGLFWLayer : public ImguiLayer
 	{

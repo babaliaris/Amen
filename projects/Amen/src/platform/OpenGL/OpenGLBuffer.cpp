@@ -6,11 +6,11 @@
 
 
 
-GLenum AmenShaderTypeToGLenum(Amen::ShaderType type);
+GLenum HazelShaderTypeToGLenum(Hazel::ShaderType type);
 
 
 
-Amen::OpenGLVertexBuffer::OpenGLVertexBuffer(const float* data, unsigned int size)
+Hazel::OpenGLVertexBuffer::OpenGLVertexBuffer(const float* data, unsigned int size)
 	: m_id(0)
 {
 	GLCall(glGenBuffers(1, &m_id));
@@ -23,7 +23,7 @@ Amen::OpenGLVertexBuffer::OpenGLVertexBuffer(const float* data, unsigned int siz
 
 
 
-Amen::OpenGLVertexBuffer::~OpenGLVertexBuffer()
+Hazel::OpenGLVertexBuffer::~OpenGLVertexBuffer()
 {
 	AMEN_INFO("Calling ~OpenGLVertexBuffer()");
 	GLCall(glDeleteBuffers(1, &m_id));
@@ -33,7 +33,7 @@ Amen::OpenGLVertexBuffer::~OpenGLVertexBuffer()
 
 
 
-void Amen::OpenGLVertexBuffer::Bind()
+void Hazel::OpenGLVertexBuffer::Bind()
 {
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_id));
 }
@@ -42,7 +42,7 @@ void Amen::OpenGLVertexBuffer::Bind()
 
 
 
-void Amen::OpenGLVertexBuffer::UnBind()
+void Hazel::OpenGLVertexBuffer::UnBind()
 {
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 }
@@ -51,7 +51,7 @@ void Amen::OpenGLVertexBuffer::UnBind()
 
 
 
-Amen::OpenGLIndexBuffer::OpenGLIndexBuffer(unsigned int* data, unsigned int count)
+Hazel::OpenGLIndexBuffer::OpenGLIndexBuffer(unsigned int* data, unsigned int count)
 	: IndexBuffer(count), m_id(0)
 {
 	GLCall(glGenBuffers(1, &m_id));
@@ -64,7 +64,7 @@ Amen::OpenGLIndexBuffer::OpenGLIndexBuffer(unsigned int* data, unsigned int coun
 
 
 
-Amen::OpenGLIndexBuffer::~OpenGLIndexBuffer()
+Hazel::OpenGLIndexBuffer::~OpenGLIndexBuffer()
 {
 	AMEN_INFO("Calling ~OpenGLIndexBuffer()");
 	GLCall(glDeleteBuffers(1, &m_id));
@@ -74,7 +74,7 @@ Amen::OpenGLIndexBuffer::~OpenGLIndexBuffer()
 
 
 
-void Amen::OpenGLIndexBuffer::Bind()
+void Hazel::OpenGLIndexBuffer::Bind()
 {
 	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id));
 }
@@ -83,7 +83,7 @@ void Amen::OpenGLIndexBuffer::Bind()
 
 
 
-void Amen::OpenGLIndexBuffer::UnBind()
+void Hazel::OpenGLIndexBuffer::UnBind()
 {
 	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 }
@@ -92,7 +92,7 @@ void Amen::OpenGLIndexBuffer::UnBind()
 
 
 
-Amen::OpenGLArrayBuffer::OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
+Hazel::OpenGLArrayBuffer::OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<IndexBuffer> indexBuffer)
 	: ArrayBuffer(vertexBuffer, indexBuffer), m_id(0)
 {
 	GLCall(glGenVertexArrays(1, &m_id));
@@ -110,7 +110,7 @@ Amen::OpenGLArrayBuffer::OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<I
 		GLCall(glVertexAttribPointer(
 			index, 
 			GetShaderTypeCount(element.Type), 
-			AmenShaderTypeToGLenum(element.Type), 
+			HazelShaderTypeToGLenum(element.Type), 
 			element.Normalized ? GL_TRUE : GL_FALSE, 
 			vertexBuffer->GetStride(),
 			(const void *)offset));
@@ -130,7 +130,7 @@ Amen::OpenGLArrayBuffer::OpenGLArrayBuffer(Ref<VertexBuffer> vertexBuffer, Ref<I
 
 
 
-Amen::OpenGLArrayBuffer::~OpenGLArrayBuffer()
+Hazel::OpenGLArrayBuffer::~OpenGLArrayBuffer()
 {
 	AMEN_INFO("Calling ~OpenGLArrayBuffer()");
 	GLCall(glDeleteVertexArrays(1, &m_id));
@@ -140,7 +140,7 @@ Amen::OpenGLArrayBuffer::~OpenGLArrayBuffer()
 
 
 
-void Amen::OpenGLArrayBuffer::Bind()
+void Hazel::OpenGLArrayBuffer::Bind()
 {
 	GLCall(glBindVertexArray(m_id));
 }
@@ -149,7 +149,7 @@ void Amen::OpenGLArrayBuffer::Bind()
 
 
 
-void Amen::OpenGLArrayBuffer::UnBind()
+void Hazel::OpenGLArrayBuffer::UnBind()
 {
 	GLCall(glBindVertexArray(0));
 }
@@ -157,25 +157,25 @@ void Amen::OpenGLArrayBuffer::UnBind()
 
 
 
-GLenum AmenShaderTypeToGLenum(Amen::ShaderType type)
+GLenum HazelShaderTypeToGLenum(Hazel::ShaderType type)
 {
 	switch (type)
 	{
-		case Amen::ShaderType::NONE:	return GL_NONE;
-		case Amen::ShaderType::BOOL1:	return GL_BOOL;
-		case Amen::ShaderType::BOOL2:	return GL_BOOL;
-		case Amen::ShaderType::BOOL3:	return GL_BOOL;
-		case Amen::ShaderType::BOOL4:	return GL_BOOL;
-		case Amen::ShaderType::INT1:	return GL_INT;
-		case Amen::ShaderType::INT2:	return GL_INT;
-		case Amen::ShaderType::INT3:	return GL_INT;
-		case Amen::ShaderType::INT4:	return GL_INT;
-		case Amen::ShaderType::FLOAT1:	return GL_FLOAT;
-		case Amen::ShaderType::FLOAT2:	return GL_FLOAT;
-		case Amen::ShaderType::FLOAT3:	return GL_FLOAT;
-		case Amen::ShaderType::FLOAT4:	return GL_FLOAT;
-		case Amen::ShaderType::MAT3:	return GL_FLOAT_MAT3;
-		case Amen::ShaderType::MAT4:	return GL_FLOAT_MAT4;
+		case Hazel::ShaderType::NONE:	return GL_NONE;
+		case Hazel::ShaderType::BOOL1:	return GL_BOOL;
+		case Hazel::ShaderType::BOOL2:	return GL_BOOL;
+		case Hazel::ShaderType::BOOL3:	return GL_BOOL;
+		case Hazel::ShaderType::BOOL4:	return GL_BOOL;
+		case Hazel::ShaderType::INT1:	return GL_INT;
+		case Hazel::ShaderType::INT2:	return GL_INT;
+		case Hazel::ShaderType::INT3:	return GL_INT;
+		case Hazel::ShaderType::INT4:	return GL_INT;
+		case Hazel::ShaderType::FLOAT1:	return GL_FLOAT;
+		case Hazel::ShaderType::FLOAT2:	return GL_FLOAT;
+		case Hazel::ShaderType::FLOAT3:	return GL_FLOAT;
+		case Hazel::ShaderType::FLOAT4:	return GL_FLOAT;
+		case Hazel::ShaderType::MAT3:	return GL_FLOAT_MAT3;
+		case Hazel::ShaderType::MAT4:	return GL_FLOAT_MAT4;
 
 		default:
 		{

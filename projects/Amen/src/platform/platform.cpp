@@ -8,11 +8,11 @@
 #include <GLFW/glfw3.h>
 
 //Initialize the s_type static variable.
-Amen::PlatformTypeE Amen::Platform::s_type;
+Hazel::PlatformTypeE Hazel::Platform::s_type;
 
 
 
-void Amen::Platform::Init()
+void Hazel::Platform::Init()
 {
 	#ifdef AMEN_WINDOWS
 		s_type = PlatformTypeE::WINDOWS;
@@ -28,7 +28,7 @@ void Amen::Platform::Init()
 #if defined(AMEN_WINDOWS) || defined(AMEN_LINUX)
 
 	//Implement Window::Create()
-	Amen::Scope<Amen::Window> Amen::Window::Create(const Amen::WindowProps& props)
+	Hazel::Scope<Hazel::Window> Hazel::Window::Create(const Hazel::WindowProps& props)
 	{
 		//Create the window.
 		GLFW_Window *window = new GLFW_Window(props);
@@ -40,11 +40,11 @@ void Amen::Platform::Init()
 		new OpenGLRendererAPI( (GLADloadproc)glfwGetProcAddress );
 
 		//Return  the window.
-		return Amen::Scope<Window>(window);
+		return Hazel::Scope<Window>(window);
 	}
 
 	//Implement ImguiLayer::Create()
-	Amen::Layer* Amen::ImguiLayer::Create()
+	Hazel::Layer* Hazel::ImguiLayer::Create()
 	{
 		return new ImGuiGLFWLayer();
 	}

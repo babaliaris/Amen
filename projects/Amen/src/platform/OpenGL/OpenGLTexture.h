@@ -1,7 +1,7 @@
 #pragma once
 #include <core/Render/Texture.h>
 
-namespace Amen
+namespace Hazel
 {
 	class OpenGLTexture2D: public Texture2D
 	{

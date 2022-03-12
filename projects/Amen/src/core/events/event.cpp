@@ -3,207 +3,207 @@
 #include <core/logger.h>
 #include <core/core.h>
 
-std::string Amen::GetKeyboardKeyMeaning(KeyboardE key)
+std::string Hazel::GetKeyboardKeyMeaning(KeyboardE key)
 {
 	switch (key)
 	{
-		case Amen::KeyboardE::k_uknown:
+		case Hazel::KeyboardE::k_uknown:
 			return "k_uknown";
-		case Amen::KeyboardE::k_escape:
+		case Hazel::KeyboardE::k_escape:
 			return "k_escape";
-		case Amen::KeyboardE::k_f1:
+		case Hazel::KeyboardE::k_f1:
 			return "k_f1";
-		case Amen::KeyboardE::k_f2:
+		case Hazel::KeyboardE::k_f2:
 			return "k_f2";
-		case Amen::KeyboardE::k_f3:
+		case Hazel::KeyboardE::k_f3:
 			return "k_f3";
-		case Amen::KeyboardE::k_f4:
+		case Hazel::KeyboardE::k_f4:
 			return "k_f4";
-		case Amen::KeyboardE::k_f5:
+		case Hazel::KeyboardE::k_f5:
 			return "k_f5";
-		case Amen::KeyboardE::k_f6:
+		case Hazel::KeyboardE::k_f6:
 			return "k_f6";
-		case Amen::KeyboardE::k_f7:
+		case Hazel::KeyboardE::k_f7:
 			return "k_f7";
-		case Amen::KeyboardE::k_f8:
+		case Hazel::KeyboardE::k_f8:
 			return "k_f8";
-		case Amen::KeyboardE::k_f9:
+		case Hazel::KeyboardE::k_f9:
 			return "k_f9";
-		case Amen::KeyboardE::k_f10:
+		case Hazel::KeyboardE::k_f10:
 			return "k_f10";
-		case Amen::KeyboardE::k_f11:
+		case Hazel::KeyboardE::k_f11:
 			return "k_f11";
-		case Amen::KeyboardE::k_f12:
+		case Hazel::KeyboardE::k_f12:
 			return "k_f12";
-		case Amen::KeyboardE::k_tilde:
+		case Hazel::KeyboardE::k_tilde:
 			return "k_tilde";
-		case Amen::KeyboardE::k_1:
+		case Hazel::KeyboardE::k_1:
 			return "k_1";
-		case Amen::KeyboardE::k_2:
+		case Hazel::KeyboardE::k_2:
 			return "k_2";
-		case Amen::KeyboardE::k_3:
+		case Hazel::KeyboardE::k_3:
 			return "k_3";
-		case Amen::KeyboardE::k_4:
+		case Hazel::KeyboardE::k_4:
 			return "k_4";
-		case Amen::KeyboardE::k_5:
+		case Hazel::KeyboardE::k_5:
 			return "k_5";
-		case Amen::KeyboardE::k_6:
+		case Hazel::KeyboardE::k_6:
 			return "k_6";
-		case Amen::KeyboardE::k_7:
+		case Hazel::KeyboardE::k_7:
 			return "k_7";
-		case Amen::KeyboardE::k_8:
+		case Hazel::KeyboardE::k_8:
 			return "k_8";
-		case Amen::KeyboardE::k_9:
+		case Hazel::KeyboardE::k_9:
 			return "k_9";
-		case Amen::KeyboardE::k_0:
+		case Hazel::KeyboardE::k_0:
 			return "k_0";
-		case Amen::KeyboardE::k_minus:
+		case Hazel::KeyboardE::k_minus:
 			return "k_minus";
-		case Amen::KeyboardE::k_plus:
+		case Hazel::KeyboardE::k_plus:
 			return "k_plus";
-		case Amen::KeyboardE::k_backspace:
+		case Hazel::KeyboardE::k_backspace:
 			return "k_backspace";
-		case Amen::KeyboardE::k_insert:
+		case Hazel::KeyboardE::k_insert:
 			return "k_insert";
-		case Amen::KeyboardE::k_home:
+		case Hazel::KeyboardE::k_home:
 			return "k_home";
-		case Amen::KeyboardE::k_pageup:
+		case Hazel::KeyboardE::k_pageup:
 			return "k_pageup";
-		case Amen::KeyboardE::k_tab:
+		case Hazel::KeyboardE::k_tab:
 			return "k_tab";
-		case Amen::KeyboardE::k_q:
+		case Hazel::KeyboardE::k_q:
 			return "k_q";
-		case Amen::KeyboardE::k_w:
+		case Hazel::KeyboardE::k_w:
 			return "k_w";
-		case Amen::KeyboardE::k_e:
+		case Hazel::KeyboardE::k_e:
 			return "k_e";
-		case Amen::KeyboardE::k_r:
+		case Hazel::KeyboardE::k_r:
 			return "k_r";
-		case Amen::KeyboardE::k_t:
+		case Hazel::KeyboardE::k_t:
 			return "k_t";
-		case Amen::KeyboardE::k_y:
+		case Hazel::KeyboardE::k_y:
 			return "k_y";
-		case Amen::KeyboardE::k_u:
+		case Hazel::KeyboardE::k_u:
 			return "k_u";
-		case Amen::KeyboardE::k_i:
+		case Hazel::KeyboardE::k_i:
 			return "k_i";
-		case Amen::KeyboardE::k_o:
+		case Hazel::KeyboardE::k_o:
 			return "k_o";
-		case Amen::KeyboardE::k_p:
+		case Hazel::KeyboardE::k_p:
 			return "k_p";
-		case Amen::KeyboardE::k_left_bracket:
+		case Hazel::KeyboardE::k_left_bracket:
 			return "k_left_bracket";
-		case Amen::KeyboardE::k_right_bracket:
+		case Hazel::KeyboardE::k_right_bracket:
 			return "k_right_bracket";
-		case Amen::KeyboardE::k_backslash:
+		case Hazel::KeyboardE::k_backslash:
 			return "k_backslash";
-		case Amen::KeyboardE::k_delet:
+		case Hazel::KeyboardE::k_delet:
 			return "k_delet";
-		case Amen::KeyboardE::k_end:
+		case Hazel::KeyboardE::k_end:
 			return "k_end";
-		case Amen::KeyboardE::k_pagedown:
+		case Hazel::KeyboardE::k_pagedown:
 			return "k_pagedown";
-		case Amen::KeyboardE::k_caps:
+		case Hazel::KeyboardE::k_caps:
 			return "k_caps";
-		case Amen::KeyboardE::k_a:
+		case Hazel::KeyboardE::k_a:
 			return "k_a";
-		case Amen::KeyboardE::k_s:
+		case Hazel::KeyboardE::k_s:
 			return "k_s";
-		case Amen::KeyboardE::k_d:
+		case Hazel::KeyboardE::k_d:
 			return "k_d";
-		case Amen::KeyboardE::k_f:
+		case Hazel::KeyboardE::k_f:
 			return "k_f";
-		case Amen::KeyboardE::k_g:
+		case Hazel::KeyboardE::k_g:
 			return "k_g";
-		case Amen::KeyboardE::k_h:
+		case Hazel::KeyboardE::k_h:
 			return "k_h";
-		case Amen::KeyboardE::k_j:
+		case Hazel::KeyboardE::k_j:
 			return "k_j";
-		case Amen::KeyboardE::k_k:
+		case Hazel::KeyboardE::k_k:
 			return "k_k";
-		case Amen::KeyboardE::k_l:
+		case Hazel::KeyboardE::k_l:
 			return "k_l";
-		case Amen::KeyboardE::k_semicolon:
+		case Hazel::KeyboardE::k_semicolon:
 			return "k_semicolon";
-		case Amen::KeyboardE::k_quotes:
+		case Hazel::KeyboardE::k_quotes:
 			return "k_quotes";
-		case Amen::KeyboardE::k_enter:
+		case Hazel::KeyboardE::k_enter:
 			return "k_enter";
-		case Amen::KeyboardE::k_left_shift:
+		case Hazel::KeyboardE::k_left_shift:
 			return "k_left_shift";
-		case Amen::KeyboardE::k_z:
+		case Hazel::KeyboardE::k_z:
 			return "k_z";
-		case Amen::KeyboardE::k_x:
+		case Hazel::KeyboardE::k_x:
 			return "k_x";
-		case Amen::KeyboardE::k_c:
+		case Hazel::KeyboardE::k_c:
 			return "k_c";
-		case Amen::KeyboardE::k_v:
+		case Hazel::KeyboardE::k_v:
 			return "k_v";
-		case Amen::KeyboardE::k_b:
+		case Hazel::KeyboardE::k_b:
 			return "k_b";
-		case Amen::KeyboardE::k_n:
+		case Hazel::KeyboardE::k_n:
 			return "k_n";
-		case Amen::KeyboardE::k_m:
+		case Hazel::KeyboardE::k_m:
 			return "k_m";
-		case Amen::KeyboardE::k_less:
+		case Hazel::KeyboardE::k_less:
 			return "k_less";
-		case Amen::KeyboardE::k_greater:
+		case Hazel::KeyboardE::k_greater:
 			return "k_greater";
-		case Amen::KeyboardE::k_question:
+		case Hazel::KeyboardE::k_question:
 			return "k_question";
-		case Amen::KeyboardE::k_right_shift:
+		case Hazel::KeyboardE::k_right_shift:
 			return "k_right_shift";
-		case Amen::KeyboardE::k_up:
+		case Hazel::KeyboardE::k_up:
 			return "k_up";
-		case Amen::KeyboardE::k_left_control:
+		case Hazel::KeyboardE::k_left_control:
 			return "k_left_control";
-		case Amen::KeyboardE::k_super:
+		case Hazel::KeyboardE::k_super:
 			return "k_super";
-		case Amen::KeyboardE::k_left_alt:
+		case Hazel::KeyboardE::k_left_alt:
 			return "k_left_alt";
-		case Amen::KeyboardE::k_space:
+		case Hazel::KeyboardE::k_space:
 			return "k_space";
-		case Amen::KeyboardE::k_right_alt:
+		case Hazel::KeyboardE::k_right_alt:
 			return "k_right_alt";
-		case Amen::KeyboardE::k_right_control:
+		case Hazel::KeyboardE::k_right_control:
 			return "k_right_control";
-		case Amen::KeyboardE::k_left:
+		case Hazel::KeyboardE::k_left:
 			return "k_left";
-		case Amen::KeyboardE::k_down:
+		case Hazel::KeyboardE::k_down:
 			return "k_down";
-		case Amen::KeyboardE::k_right:
+		case Hazel::KeyboardE::k_right:
 			return "k_right";
-		case Amen::KeyboardE::kp_slash:
+		case Hazel::KeyboardE::kp_slash:
 			return "kp_slash";
-		case Amen::KeyboardE::kp_asterisk:
+		case Hazel::KeyboardE::kp_asterisk:
 			return "kp_asterisk";
-		case Amen::KeyboardE::kp_minus:
+		case Hazel::KeyboardE::kp_minus:
 			return "kp_minus";
-		case Amen::KeyboardE::kp_plus:
+		case Hazel::KeyboardE::kp_plus:
 			return "kp_plus";
-		case Amen::KeyboardE::kp_enter:
+		case Hazel::KeyboardE::kp_enter:
 			return "kp_enter";
-		case Amen::KeyboardE::kp_comma:
+		case Hazel::KeyboardE::kp_comma:
 			return "kp_comma";
-		case Amen::KeyboardE::kp_1:
+		case Hazel::KeyboardE::kp_1:
 			return "kp_1";
-		case Amen::KeyboardE::kp_2:
+		case Hazel::KeyboardE::kp_2:
 			return "kp_2";
-		case Amen::KeyboardE::kp_3:
+		case Hazel::KeyboardE::kp_3:
 			return "kp_3";
-		case Amen::KeyboardE::kp_4:
+		case Hazel::KeyboardE::kp_4:
 			return "kp_4";
-		case Amen::KeyboardE::kp_5:
+		case Hazel::KeyboardE::kp_5:
 			return "kp_5";
-		case Amen::KeyboardE::kp_6:
+		case Hazel::KeyboardE::kp_6:
 			return "kp_6";
-		case Amen::KeyboardE::kp_7:
+		case Hazel::KeyboardE::kp_7:
 			return "kp_7";
-		case Amen::KeyboardE::kp_8:
+		case Hazel::KeyboardE::kp_8:
 			return "kp_8";
-		case Amen::KeyboardE::kp_9:
+		case Hazel::KeyboardE::kp_9:
 			return "kp_9";
-		case Amen::KeyboardE::kp_0:
+		case Hazel::KeyboardE::kp_0:
 			return "kp_0";
 		default:
 		{
@@ -213,21 +213,21 @@ std::string Amen::GetKeyboardKeyMeaning(KeyboardE key)
 	}
 }
 
-std::string Amen::GetMouseButtonMeaning(MouseButtonE button)
+std::string Hazel::GetMouseButtonMeaning(MouseButtonE button)
 {
 	switch (button)
 	{
-		case Amen::MouseButtonE::button_uknown:
+		case Hazel::MouseButtonE::button_uknown:
 			return "button_uknown";
-		case Amen::MouseButtonE::button_left:
+		case Hazel::MouseButtonE::button_left:
 			return "button_left";
-		case Amen::MouseButtonE::button_middle:
+		case Hazel::MouseButtonE::button_middle:
 			return "button_middle";
-		case Amen::MouseButtonE::button_right:
+		case Hazel::MouseButtonE::button_right:
 			return "button_right";
-		case Amen::MouseButtonE::button_extra1:
+		case Hazel::MouseButtonE::button_extra1:
 			return "button_extra1";
-		case Amen::MouseButtonE::button_extra2:
+		case Hazel::MouseButtonE::button_extra2:
 			return "button_extra2";
 		default:
 		{

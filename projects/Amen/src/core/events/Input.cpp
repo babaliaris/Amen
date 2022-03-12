@@ -5,10 +5,10 @@
 
 #include <platform/glfw/GLFWInput.h>
 
-Amen::Input* Amen::Input::s_instance = nullptr;
+Hazel::Input* Hazel::Input::s_instance = nullptr;
 
 
-void Amen::Input::Init()
+void Hazel::Input::Init()
 {
 	AMEN_ASSERT(s_instance == nullptr, "Already another instance? This is a singleton!");
 
