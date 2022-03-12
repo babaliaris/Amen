@@ -42,7 +42,7 @@ Hazel::OpenGLTexture2D::OpenGLTexture2D(const std::string& path)
 		default:
 		{
 			AMEN_ASSERT(false, "This line should never be reached.")
-			src_channels = GL_ID_UNKNOWN;
+			src_channels = 0;
 			break;
 		}
 	}
